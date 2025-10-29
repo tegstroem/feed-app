@@ -1,0 +1,30 @@
+
+
+body{
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+
+#img-container{
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center; 
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  row-gap: 2rem;
+}
+
+img{
+  display: block;
+  height: 300px;  
+    width: 300px;
+  object-fit: cover;
+  display: block;
+    width:90%;
+  height: 100%; 
+
+}
