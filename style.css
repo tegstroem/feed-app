@@ -12,7 +12,7 @@ body{
   flex-direction: column-reverse;
   justify-content: center;
   align-items: center; 
-  overflow: hidden;
+  overflow: hidden;   
   height: 100%;
   width: 100%;
   row-gap: 2rem;
