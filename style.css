@@ -1,11 +1,26 @@
 
 
+h1 {
+  color: rgb(231, 231, 231);
+  font-size: medium;
+  font-family:sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
 body{
   margin: 0;
   box-sizing: border-box;
   height: 100%;
+  background-color: black;
+  color: rgb(233, 233, 233);
 }
 
+.box {
+background-color: rgb(233, 233, 233);
+border-radius: 5px;
+align-items: center;
+}
 
 #img-container{
   display: flex;
@@ -13,18 +28,15 @@ body{
   justify-content: center;
   align-items: center; 
   overflow: hidden;   
-  height: 100%;
-  width: 100%;
   row-gap: 2rem;
 }
 
 img{
   display: block;
   height: 300px;  
-    width: 300px;
+  width: 100%;
   object-fit: cover;
   display: block;
-    width:90%;
-  height: 100%; 
-
+  border-radius: 5px;
 }
+
