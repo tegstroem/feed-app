@@ -23,9 +23,10 @@ feeling of looking through a porfolio book.
 - img-container 
 
 # function-names
--RenderFeed() - fetch the feed images
-- swipe right addeventlistener
-- Swipe Left addeventlistener
+-FetchPages()- fetching all pages
+-RenderImages() - fetch the images for each page
+-Swipe-right-addeventlistener
+-Swipe- Left- addeventlistener
 - Save an image addeventlistener
 - heartBtn - Like icon addeventlistener
 - Art description 
