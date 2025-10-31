@@ -105,3 +105,21 @@ imgContainer.addEventListener('touchend', move, false);
 
 fetchImages();
 
+// Like button functionality
+const heartBtn = document.getElementById('heartBtn');
+const heartIcon = document.getElementById('heartIcon');
+const likeCount = document.getElementById('likeCount');
+
+
+let likes = parseInt(likeCount.textContent,10) || 0;
+
+ heartBtn.addEventListener('click', () => {
+  likes += 1;
+  likeCount.textContent = likes;
+
+  heartIcon.textContent = '❤️';
+  setTimeout(() => {
+    heartIcon.textContent = '♡';
+  }, 300);
+});
+

@@ -23,7 +23,7 @@ align-items: center;
 }
 
 #img-container{
-  display: flex;
+  display: block;
   flex-direction: column-reverse;
   justify-content: center;
   align-items: center; 
@@ -40,3 +40,45 @@ img{
   border-radius: 5px;
 }
 
+.heart-button {
+  position: absolute;
+  top: 320px;   
+  right: 12px;    
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  z-index: 5;
+  
+}
+
+
+.heart-button #heartIcon {
+  display: inline-block;
+  transition: transform 0.2s ease, color 0.2s ease;
+  color: inherit;
+  font-size: 18px;
+
+
+}
+
+.heart-button.active #heartIcon {
+  color: red;
+  background-color: red;
+  transform: scale(1.2);
+}
+
+.heart-button:hover {
+  transform: scale(1.1);
+  
+}
+ #likeCount{
+  font-size: 10px;
+ }
+
+ 
