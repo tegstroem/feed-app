@@ -23,6 +23,16 @@ border-radius: 5px;
 align-items: center;
 }
 
+img{
+  display: block;
+  height: 100%;  
+  width: 95%  ;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-top: 5rem;
+}
+
+
 #img-container{
   display: flex;
   flex-direction: column-reverse;
@@ -30,15 +40,5 @@ align-items: center;
   align-items: center; 
   overflow: hidden;   
   row-gap: 2rem;
+
 }
-
-img{
-  display: block;
-  height: 300px;  
-  width: 90%  ;
-  object-fit: cover;
-  border-radius: 5px;
-  margin-top: 5rem;
-}
-
-

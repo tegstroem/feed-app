@@ -1,57 +1,66 @@
 const imgContainer = document.getElementById('img-container');
 const imgEl = document.createElement('img');
 
-   
-
-
 //Creating an empty array to push the images in
-//Intializinf currentPages to start with page 1
-//Intitalizing totalPages and giving it value of 20 pages
+//Intializing currentPages to start with page 1
+//Intializing totalPages and giving it value of 20 pages
 // intializing image index
 
-
 let images = [];
-let currentPage = 1;
+
 let totalPages = 20;
 let currentIndex = 0;
 let isDragging = false;
 let startPosX = 0;
 
 
-
-// fetching all the pages.
-
-function fetchPages(){
-
-
-  for(let page = 1; page <= totalPages; page++){
-
-    fetch(`https://image-feed-api.vercel.app/api/images?page=${page}`)
-    .then(res => res.json())
-    .then(data => {
-      const allImages = data.data.map( img => img.image_url)
-      images = images.concat(allImages);
+async function fetchPages(){
+  
+  try{
+    for( let page = 1; page <= totalPages; page++){
+      const res = await fetch(`https://image-feed-api.vercel.app/api/images?page=${page}`);
+      const data = await res.json();
+    const  allImages = data.data.map(img => img.image_url)
+    images = images.concat(allImages);
 
 
-      if(page === 1){
-        renderImage()
-      }
-    }) .catch(err => console.error("Failed to fetch images:", err));
-
+    if(page ===1){
+      renderImage()
+    }
+    }
+  }catch(error){
+    
+    console.log("Error while fetching API", error)
+  }finally{
+console.log("Fetching images is completed")
   }
 }
 
 fetchPages()
 
-// Rndering the images for each page that we fetched
+
+
+// Rendering the images for each page that we fetched
 function renderImage() {
+   
     if (images.length > 0) {
         imgEl.src = images[currentIndex];
+        imgEl.classList.add('pic')
         if (!imgContainer.contains(imgEl)) {
             imgContainer.appendChild(imgEl);
+          
         }
     }
+
 }
+  
+
+
+
+
+
+
+
 
 
 
@@ -116,8 +125,6 @@ imgContainer.addEventListener('touchmove', drag, false);
 imgContainer.addEventListener('touchend', move, false);
 
 fetchPages()
-
-
 
 
 
