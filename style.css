@@ -1,4 +1,11 @@
-
+body{
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+  background-color: black;
+  color: rgb(233, 233, 233);
+  
+}
 
 h1 {
   color: rgb(231, 231, 231);
@@ -8,13 +15,7 @@ h1 {
   padding: 20px;
 }
 
-body{
-  margin: 0;
-  box-sizing: border-box;
-  height: 100%;
-  background-color: black;
-  color: rgb(233, 233, 233);
-}
+
 
 .box {
 background-color: rgb(233, 233, 233);
@@ -29,14 +30,116 @@ align-items: center;
   align-items: center; 
   overflow: hidden;   
   row-gap: 2rem;
+   transition: filter 0s, transform 0s;   position: relative;
 }
 
 img{
   display: block;
-  height: 300px;  
-  width: 100%;
+  height: 100%;  
+  width: 95%  ;
   object-fit: cover;
-  display: block;
-  border-radius: 5px;
+  border-radius: 10px;
+  margin-top: 5rem;
 }
+
+/*These different overlay colors applied to the card, green overlay is to demonstrate swiping to the right by touch, red overlay is to the left */
+#img-container.green-overlay{
+    filter: brightness(0.8) sepia(1) hue-rotate(60deg) saturate(1.5);
+  transform: scale(1.01);
+}
+
+#img-container.red-overlay {
+ filter: brightness(0.8) sepia(1) hue-rotate(-30deg) saturate(0);
+  transform: scale(1.01);
+}
+
+ /*Animation that shakes the card twice right and left */
+
+.shake-right{
+   animation: shakeRightSide 2s ease-in-out 2;
+  animation-delay: 0s;
+}
+.shake-left{
+   animation: shakeLeftSide 2s ease-in-out 2;
+  animation-delay: 0s;
+}
+
+
+@keyframes shakeRightSide{
+    0% { transform: translateX(0) rotate(0deg); }
+  25%  { transform: translateX(15px) rotate(5deg); }
+  50%  { transform: translateX(30px) rotate(10deg); }
+  75%  { transform: translateX(15px) rotate(5deg); }
+  100% { transform: translateX(0) rotate(0deg); }
+ 
+}
+
+
+@keyframes shakeLeftSide {
+  0%   { transform: translateX(0) rotate(0deg); }
+  25%  { transform: translateX(-15px) rotate(-5deg); }
+  50%  { transform: translateX(-30px) rotate(-10deg); }
+  75%  { transform: translateX(-15px) rotate(-5deg); }
+  100% { transform: translateX(0) rotate(0deg); }
+
+
+}
+
+/* A cursor like icon that moves to the right and left   */
+
+#swipe-demo{
+  display: flex;
+  column-gap: 1.5rem;
+  justify-content: center;
+  z-index: 1000;
+}
+
+
+#swipe-demo .animation {
+  font-size: xx-large;
+margin-top: -13rem;
+  font-weight: bold;
+}
+
+
+#right-side{
+  position: relative;
+  animation: moveRight 2s ease-in-out 2;
+  animation-delay: 0s;
+
+
+}
+
+
+@keyframes moveRight {
+  from{
+    right:0px;
+  }
+  to{
+    right:-500px;
+  }
+}
+
+
+
+#left-side{
+  position: relative;
+  animation: moveLeft 2s ease-in-out 2;
+  animation-delay: 0s;
+ 
+}
+
+
+@keyframes moveLeft {
+  from {
+    left: 0px;
+  }
+  to {
+    left: -500px;
+  }
+}
+
+
+
+
 

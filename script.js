@@ -1,48 +1,70 @@
 const imgContainer = document.getElementById('img-container');
 const imgEl = document.createElement('img');
 
-   
-
-
 //Creating an empty array to push the images in
+//Intializing currentPages to start with page 1
+//Intializing totalPages and giving it value of 20 pages
 // intializing image index
 
 let images = [];
+
+let totalPages = 20;
 let currentIndex = 0;
 let isDragging = false;
 let startPosX = 0;
 
 
+async function fetchPages(){
+  
+  try{
+    for( let page = 1; page <= totalPages; page++){
+      const res = await fetch(`https://image-feed-api.vercel.app/api/images?page=${page}`);
+      const data = await res.json();
+    const  allImages = data.data.map(img => img.image_url)
+    images = images.concat(allImages);
 
-// fetching all the images in page one.
-// Accessing the data array and mapping over the images then pusshing the images inside the array by the their url
-// then displaying the images according to it index insde the renderfeed function
 
-function fetchImages(){
-    fetch('https://image-feed-api.vercel.app/api/images')
-  .then(res => res.json())
-  .then( data => {
-    images = data.data.map(img => img.image_url);
-    if (images.length > 0) {
-      renderImage();
+    if(page ===1){
+      renderImage()
     }
+    }
+  }catch(error){
     
-  })
-  .catch(err => console.error("Failed to fetch images:", err));
-
-  
-  
+    console.log("Error while fetching API", error)
+  }finally{
+console.log("Fetching images is completed")
+  }
 }
 
+fetchPages()
 
+
+
+// Rendering the images for each page that we fetched
 function renderImage() {
+   
     if (images.length > 0) {
         imgEl.src = images[currentIndex];
+        imgEl.classList.add('pic')
         if (!imgContainer.contains(imgEl)) {
             imgContainer.appendChild(imgEl);
+          
         }
     }
+
 }
+  
+
+
+
+
+
+
+
+
+
+
+
 
 function unify(e) {
     return e.changedTouches ? e.changedTouches[0] : e;
@@ -51,7 +73,6 @@ function unify(e) {
 function lock(e) {
     isDragging = true;
     startPosX = unify(e).clientX;
-    
 }
 
 function drag(e) {
@@ -67,7 +88,7 @@ function move(e) {
     imgContainer.style.cursor = 'grab';
     
 /* the variable endPosX side to side postion of an event from where the mouse start to end. 
-The unify function (chat-gtp) - This will help the mouse event have the same function -
+The unify function - This will help the mouse event have the same function -
 when the user swips with the finder*/
 
     const endPosX = unify(e).clientX;
@@ -103,5 +124,57 @@ imgContainer.addEventListener('touchstart', lock, false);
 imgContainer.addEventListener('touchmove', drag, false);
 imgContainer.addEventListener('touchend', move, false);
 
-fetchImages();
+fetchPages()
 
+
+
+// The swipeRightAnimation() is to display a demo of the "swipe by touch function". It's stored in the localStorage so it only render for users who visited the app first time.
+// The setTimeout is an inbuilt method to set the time that how long each animation will last, 
+
+function swipeRightAnimation(){
+  const swipeRightDemo = document.getElementById('right-side');
+  const swipeLeftDemo = document.getElementById('left-side');
+SwipeDemoShow = document.querySelectorAll('.animation')
+
+
+swipeRightDemo.style.visibility = 'hidden';
+swipeLeftDemo.style.visibility = 'hidden';
+
+
+if(!localStorage.getItem(SwipeDemoShow)){
+  localStorage.setItem(SwipeDemoShow, "true");
+  setTimeout(()=>{
+ imgContainer.classList.add('green-overlay', 'shake-right', );
+ swipeRightDemo.style.visibility = 'visible'  ;
+
+
+},100)
+
+
+setTimeout(()=>{
+   imgContainer.classList.remove('green-overlay', 'shake-right', );
+    swipeRightDemo.style.visibility = 'hidden';
+},4000);
+
+setTimeout(()=>{
+  imgContainer.classList.add('red-overlay', 'shake-left', );
+ swipeLeftDemo.style.animation = 'none';
+    swipeLeftDemo.offsetHeight;
+    swipeLeftDemo.style.animation = null;
+
+
+    swipeLeftDemo.style.visibility = 'visible';
+},4000);
+
+
+setTimeout(()=>{
+  imgContainer.classList.remove('red-overlay', 'shake-left', );
+  swipeLeftDemo.style.visibility = 'hidden';
+},8000);
+}
+
+
+}
+
+
+swipeRightAnimation()
