@@ -1,7 +1,11 @@
 const imgContainer = document.getElementById('img-container');
 const imgEl = document.createElement('img');
 
-   
+// Like button elements
+const heartBtn = document.getElementById('heartBtn');
+const heartIcon = document.getElementById('heartIcon');
+const likeCount = document.getElementById('likeCount');
+
 
 
 //Creating an empty array to push the images in
@@ -11,6 +15,7 @@ let images = [];
 let currentIndex = 0;
 let isDragging = false;
 let startPosX = 0;
+let likes = {};
 
 
 
@@ -23,7 +28,11 @@ function fetchImages(){
   .then(res => res.json())
   .then( data => {
     images = data.data.map(img => img.image_url);
-    if (images.length > 0) {
+     
+    // Initialize each image’s like count
+      images.forEach((_, index) => likes[index] = 0);
+    
+      if (images.length > 0) {
       renderImage();
     }
     
@@ -41,6 +50,10 @@ function renderImage() {
         if (!imgContainer.contains(imgEl)) {
             imgContainer.appendChild(imgEl);
         }
+
+  // Update like count and heart color for the current image
+    likeCount.textContent = likes[currentIndex];
+    heartIcon.textContent = likes[currentIndex] > 0 ? '❤️' : '♡';
     }
 }
 
@@ -103,23 +116,23 @@ imgContainer.addEventListener('touchstart', lock, false);
 imgContainer.addEventListener('touchmove', drag, false);
 imgContainer.addEventListener('touchend', move, false);
 
-fetchImages();
-
-// Like button functionality
-const heartBtn = document.getElementById('heartBtn');
-const heartIcon = document.getElementById('heartIcon');
-const likeCount = document.getElementById('likeCount');
 
 
-let likes = parseInt(likeCount.textContent,10) || 0;
+// Like button 
 
- heartBtn.addEventListener('click', () => {
-  likes += 1;
-  likeCount.textContent = likes;
+
+heartBtn.addEventListener('click', () => {
+  likes[currentIndex] += 1;
+  likeCount.textContent = likes[currentIndex];
 
   heartIcon.textContent = '❤️';
+  heartIcon.classList.add('active');
+
   setTimeout(() => {
-    heartIcon.textContent = '♡';
+    heartIcon.classList.remove('active');
   }, 300);
 });
+
+fetchImages();
+ 
 
