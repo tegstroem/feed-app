@@ -173,8 +173,7 @@ setTimeout(()=>{
 },8000);
 }
 
-
 }
 
-
 swipeRightAnimation()
+
