@@ -107,14 +107,19 @@ function fetchImages(){
       if (images.length > 0) {
       renderImage();
     }
-    }
-  }catch(error){
+  })
+  .catch(error => {
+    console.log("Error while fetching API", error)
+  });
+}                           
+
+/*  }catch(error){
     
     console.log("Error while fetching API", error)
   }finally{
 console.log("Fetching images is completed")
-  }
-}
+  }*/
+
 
 fetchPages()
 
