@@ -8,13 +8,14 @@ const cameraspecsEl = document.createElement('p');
 
  //data.js content starts here
 
-//export function renderPost(post) {
-  //  return {
-        // name: getUser(post.index),
-        // caption: getCaption(post.index),
-        // camera: getCameraSpecs(post.index)
-    //};
-//}
+/*export function renderPost(post) {
+    return {
+    name: getUser(post.index),
+    caption: getCaption(post.index),
+    camera: getCameraSpecs(post.index)
+    };
+}*/
+
 function getUser(index) {
     const photographers = [
         "Alejandro Torres",
@@ -120,11 +121,6 @@ function fetchImages(){
 console.log("Fetching images is completed")
   }*/
 
-
-fetchPages()
-
-
-
 // Rendering the images for each page that we fetched
 function renderImage() {
    
@@ -149,18 +145,6 @@ function renderImage() {
     }
 
 }
-  
-
-
-
-
-
-
-
-
-
-
-
 
 function unify(e) {
     return e.changedTouches ? e.changedTouches[0] : e;
@@ -221,9 +205,7 @@ imgContainer.addEventListener('touchmove', drag, false);
 imgContainer.addEventListener('touchend', move, false);
 
 
-
 // Like button 
-
 
 heartBtn.addEventListener('click', () => {
   likes[currentIndex] += 1;
@@ -238,5 +220,3 @@ heartBtn.addEventListener('click', () => {
 });
 
 fetchImages();
-
-

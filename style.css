@@ -4,7 +4,7 @@ body{
   height: 100%;
   background-color: black;
   color: rgb(233, 233, 233);
-  
+  border: 25px solid black ;
 }
 
 h1 {
@@ -19,17 +19,6 @@ h2, p {
   color: #000;
   font-family: sans-serif;
   text-align: left;
-
-}
-
-
-body{
-  margin: 0;
-  box-sizing: border-box;
-  height: 100%;
-  background-color: black;
-  color: rgb(233, 233, 233);
-  border: 25px solid black ;
 }
 
 #box {
@@ -37,38 +26,65 @@ body{
   flex-direction: column;
   background-color: rgb(233, 233, 233);
   border-radius: 5px;
-  margin-left: 10px;
-  margin-right: 10px;
-  padding: 20px;
 }
 
-img{
+img {
   display: block;
-  height: 100%;  
-  width: 95%  ;
+  height: 300px;  
+  width: 100%  ;
   object-fit: cover;
-  border-radius: 10px;
-  margin-top: 5rem;
+  border-radius: 5px;
 }
-
 
 #img-container {
   display: flex;
   flex-direction: column;
   width: 100%;
   overflow: hidden;   
-  row-gap: 2rem;
-   transition: filter 0s, transform 0s;   position: relative;
-  border-radius: 10px;
+  transition: filter 0s, transform 0s;   position: relative;
+  border-radius: 5px;
 }
 
 img{
   display: block;
   height: 100%;  
-  width: 95%  ;
+  width: 100%  ;
   object-fit: cover;
-  border-radius: 10px;
-  margin-top: 5rem;
+  border-radius: 5px;
+}
+
+#button {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.2rem;
+  align-self: right;
+  position: absolute;
+}
+
+#heartIcon {
+  color: #000000;
+}
+
+#likeCount {
+  color: #000;
+  font-family: sans-serif;
+}
+
+.user-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-left: 5px;
+}
+
+#text {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 10px;
 }
 
 /*These different overlay colors applied to the card, green overlay is to demonstrate swiping to the right by touch, red overlay is to the left */
@@ -139,7 +155,6 @@ margin-top: -13rem;
 
 }
 
-
 @keyframes moveRight {
   from{
     right:0px;
@@ -149,15 +164,11 @@ margin-top: -13rem;
   }
 }
 
-
-
 #left-side{
   position: relative;
   animation: moveLeft 2s ease-in-out 2;
   animation-delay: 0s;
- 
 }
-
 
 @keyframes moveLeft {
   from {
@@ -166,43 +177,4 @@ margin-top: -13rem;
   to {
     left: -500px;
   }
-}
-
-
-
-
-
-
-#button {
-  padding: 8px 16px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-size: 1.2rem;
-  align-self: right;
- 
-}
-
-#heartIcon {
-  color: #000000;
-}
-
-#likeCount {
-  color: #000;
-  font-family: sans-serif;
-}
-
-.user-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 0;
-}
-
-#text {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 0 10px;
 }
