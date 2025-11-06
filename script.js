@@ -78,6 +78,8 @@ const likeCount = document.getElementById('likeCount');
 
 
 //Creating an empty array to push the images in
+//Intializing currentPages to start with page 1
+//Intializing totalPages and giving it value of 20 pages
 // intializing image index
 
 let images = [];
@@ -105,16 +107,22 @@ function fetchImages(){
       if (images.length > 0) {
       renderImage();
     }
+    }
+  }catch(error){
     
-  })
-  .catch(err => console.error("Failed to fetch images:", err));
-
-  
-  
+    console.log("Error while fetching API", error)
+  }finally{
+console.log("Fetching images is completed")
+  }
 }
 
+fetchPages()
 
+
+
+// Rendering the images for each page that we fetched
 function renderImage() {
+   
     if (images.length > 0) {
         imgEl.src = images[currentIndex];
         userEl.textContent = getUser(currentIndex);
@@ -134,7 +142,20 @@ function renderImage() {
         likeCount.textContent = likes[currentIndex];
         heartIcon.textContent = likes[currentIndex] > 0 ? '❤️' : '♡';
     }
+
 }
+  
+
+
+
+
+
+
+
+
+
+
+
 
 function unify(e) {
     return e.changedTouches ? e.changedTouches[0] : e;
@@ -143,7 +164,6 @@ function unify(e) {
 function lock(e) {
     isDragging = true;
     startPosX = unify(e).clientX;
-    
 }
 
 function drag(e) {
@@ -159,7 +179,7 @@ function move(e) {
     imgContainer.style.cursor = 'grab';
     
 /* the variable endPosX side to side postion of an event from where the mouse start to end. 
-The unify function (chat-gtp) - This will help the mouse event have the same function -
+The unify function - This will help the mouse event have the same function -
 when the user swips with the finder*/
 
     const endPosX = unify(e).clientX;
