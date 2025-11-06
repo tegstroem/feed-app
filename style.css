@@ -15,12 +15,31 @@ h1 {
   padding: 20px;
 }
 
+h2, p {
+  color: #000;
+  font-family: sans-serif;
+  text-align: left;
+
+}
 
 
-.box {
-background-color: rgb(233, 233, 233);
-border-radius: 5px;
-align-items: center;
+body{
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+  background-color: black;
+  color: rgb(233, 233, 233);
+  border: 25px solid black ;
+}
+
+#box {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(233, 233, 233);
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 20px;
 }
 
 img{
@@ -33,14 +52,14 @@ img{
 }
 
 
-#img-container{
+#img-container {
   display: flex;
-  flex-direction: column-reverse;
-  justify-content: center;
-  align-items: center; 
+  flex-direction: column;
+  width: 100%;
   overflow: hidden;   
   row-gap: 2rem;
    transition: filter 0s, transform 0s;   position: relative;
+  border-radius: 10px;
 }
 
 img{
@@ -153,3 +172,37 @@ margin-top: -13rem;
 
 
 
+
+#button {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.2rem;
+  align-self: right;
+ 
+}
+
+#heartIcon {
+  color: #000000;
+}
+
+#likeCount {
+  color: #000;
+  font-family: sans-serif;
+}
+
+.user-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+}
+
+#text {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 10px;
+}
