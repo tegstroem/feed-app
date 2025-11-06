@@ -1,28 +1,27 @@
 body{
-  margin: 0;
-  box-sizing: border-box;
-  height: 100%;
-  background-color: black;
-  color: rgb(233, 233, 233);
-  
-}
-
-h1 {
-  color: rgb(231, 231, 231);
-  font-size: medium;
-  font-family:sans-serif;
-  text-align: center;
-  padding: 20px;
-}
-
-body{
-  margin: 0;
-  box-sizing: border-box;
-  height: 100%;
+  display : flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
   background-color: black;
   color: rgb(233, 233, 233);
   border: 25px solid black ;
+  
 }
+
+/* Image container */
+.img-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  max-width: 500px;
+  height: auto;
+  position: relative;
+}
+
 
 
 .box {
@@ -32,15 +31,22 @@ align-items: center;
 }
 
 #img-container{
-  display: block;
-  flex-direction: column-reverse;
-  justify-content: center;
-  align-items: center; 
+  width: 90%;
+  max-width: 360px;
+  background-color: #111; /* dark background */
+  border-radius: 16px;
   overflow: hidden;   
-  row-gap: 2rem;
-  border-radius: 10px ;
-  margin-top: 30px ;
-   transition: filter 0s, transform 0s;   position: relative;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+  margin-top: 1.5rem;
+  position: relative;
+  display: inline-block; 
+}
+/* Image style */
+#img-container img {
+  width: 100%;
+  border-radius: 0;
+  object-fit: cover;
+  display: block;
 }
 
 img{
@@ -49,12 +55,18 @@ img{
   width: 95%  ;
   object-fit: cover;
   border-radius: 10px;
-  margin-top: 5rem;
+  margin-top: 1rem;
+
+}
+
+/* Like section styling */
+.like-wrapper {
+  display:none;
 }
 
 .heart-button {
   position: absolute;
-  bottom: 220px;   
+  bottom: 250px;   
   right: 12px;    
   font-size: 16px;
   border: none;
@@ -76,6 +88,30 @@ img{
   color: inherit;
   font-size: 18px;
   background-color: inherit;
+}
+
+.heart-button.active #heartIcon {
+  color:black;
+  
+  transform: scale(1.2);
+}
+
+.heart-button:hover {
+  transform: scale(1.1);
+  
+}
+ #likeCount{
+  font-size: 10px;
+ }
+
+ #like-section {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
 /*These different overlay colors applied to the card, green overlay is to demonstrate swiping to the right by touch, red overlay is to the left */
 #img-container.green-overlay{
     filter: brightness(0.8) sepia(1) hue-rotate(60deg) saturate(1.5);
@@ -119,32 +155,26 @@ img{
 
 }
 
-.heart-button.active #heartIcon {
-  color: red;
-  background-color: red;
-  transform: scale(1.2);
-}
-
-.heart-button:hover {
-  transform: scale(1.1);
-  
-}
- #likeCount{
-  font-size: 10px;
- }
-
  .container
  {
-  display: inline-block;
+  position:fixed;
+  top:20px;
+  left:20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
   cursor: pointer;
+  z-index: 1000;
 }
 
 .bar1, .bar2, .bar3 
 {
-  width: 25px;
+  width: 100%;
   height: 3px;
   background-color: white;
-  margin: 6px 0;
+  border-radius: 3px;
   transition: 0.4s;
 
 }
@@ -167,6 +197,10 @@ opacity: 0;
   column-gap: 1.5rem;
   justify-content: center;
   z-index: 1000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 
@@ -213,3 +247,4 @@ margin-top: -13rem;
     left: -500px;
   }
 }
+

@@ -19,7 +19,7 @@ let totalPages = 20;
 let currentIndex = 0;
 let isDragging = false;
 let startPosX = 0;
-let likes = {};
+let likes = [];
 
 
 async function fetchPages(){
@@ -31,18 +31,8 @@ async function fetchPages(){
     const  allImages = data.data.map(img => img.image_url)
     images = images.concat(allImages);
 
+    likes = likes.concat(allImages.map(() => 0));
 
-function fetchImages(){
-    fetch('https://image-feed-api.vercel.app/api/images')
-  .then(res => res.json())
-  .then( data => {
-    images = data.data.map(img => img.image_url);
-     
-    // Initialize each image’s like count
-      images.forEach((_, index) => likes[index] = 0);
-    
-      if (images.length > 0) {
-      renderImage();
     if(page ===1){
       renderImage()
     }
@@ -69,26 +59,20 @@ function renderImage() {
             imgContainer.appendChild(imgEl);
           
         }
-
-  // Update like count and heart color for the current image
+     
+        // ensure likes[currentIndex] is defined
+    const currentLikes = (typeof likes[currentIndex] === 'number') ? likes[currentIndex] : 0;
+    
     likeCount.textContent = likes[currentIndex];
-    heartIcon.textContent = likes[currentIndex] > 0 ? '❤️' : '♡';
+    heartIcon.textContent = likes[currentIndex] > 0 ? '🖤' : '♡';
+
+    if (currentIndex === 0 && !localStorage.getItem('SwipeDemoShown')) {
+      swipeRightAnimation();
     }
-
-}
+    }
+  }
   
-
-
-
-
-
-
-
-
-
-
-
-
+  
 function unify(e) {
     return e.changedTouches ? e.changedTouches[0] : e;
 }
@@ -153,10 +137,13 @@ imgContainer.addEventListener('touchend', move, false);
 
 
 heartBtn.addEventListener('click', () => {
+
+  if (typeof likes[currentIndex] !== 'number') likes[currentIndex] = 0;
+
   likes[currentIndex] += 1;
   likeCount.textContent = likes[currentIndex];
 
-  heartIcon.textContent = '❤️';
+  heartIcon.textContent = '🖤';
   heartIcon.classList.add('active');
 
   setTimeout(() => {
@@ -164,9 +151,9 @@ heartBtn.addEventListener('click', () => {
   }, 300);
 });
 
-fetchImages();
- 
 fetchPages()
+ 
+
 
 
 
@@ -176,21 +163,21 @@ fetchPages()
 function swipeRightAnimation(){
   const swipeRightDemo = document.getElementById('right-side');
   const swipeLeftDemo = document.getElementById('left-side');
-SwipeDemoShow = document.querySelectorAll('.animation')
+  SwipeDemoShow = document.querySelectorAll('.animation')
 
 
-swipeRightDemo.style.visibility = 'hidden';
-swipeLeftDemo.style.visibility = 'hidden';
+  swipeRightDemo.style.visibility = 'hidden';
+  swipeLeftDemo.style.visibility = 'hidden';
 
 
-if(!localStorage.getItem(SwipeDemoShow)){
-  localStorage.setItem(SwipeDemoShow, "true");
+if(!localStorage.getItem('SwipeDemoShow')) {
+
+  localStorage.setItem('SwipeDemoShow', 'true');
+
   setTimeout(()=>{
  imgContainer.classList.add('green-overlay', 'shake-right', );
  swipeRightDemo.style.visibility = 'visible'  ;
-
-
-},100)
+},100);
 
 
 setTimeout(()=>{
@@ -214,9 +201,7 @@ setTimeout(()=>{
   swipeLeftDemo.style.visibility = 'hidden';
 },8000);
 }
-
-
 }
+swipeRightAnimation();
 
 
-swipeRightAnimation()
