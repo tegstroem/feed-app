@@ -28,6 +28,10 @@ body{
 background-color: rgb(233, 233, 233);
 border-radius: 5px;
 align-items: center;
+overflow: hidden;
+row-gap: 2rem;
+transition: filter 0s, transform 0s;   
+position: relative;
 }
 
 #img-container{
@@ -197,10 +201,7 @@ opacity: 0;
   column-gap: 1.5rem;
   justify-content: center;
   z-index: 1000;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  
 }
 
 
