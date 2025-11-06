@@ -70,6 +70,12 @@ function getCameraSpecs(index) {
     return specs[index] || "Camera info unavailable";
 }
 
+// Like button elements
+const heartBtn = document.getElementById('heartBtn');
+const heartIcon = document.getElementById('heartIcon');
+const likeCount = document.getElementById('likeCount');
+
+
 
 //Creating an empty array to push the images in
 // intializing image index
@@ -78,9 +84,7 @@ let images = [];
 let currentIndex = 0;
 let isDragging = false;
 let startPosX = 0;
-let users = [];
-let captions = [];
-let cameraspecs = [];
+
 
 
 // fetching all the images in page one.
@@ -92,7 +96,11 @@ function fetchImages(){
   .then(res => res.json())
   .then( data => {
     images = data.data.map(img => img.image_url);
-    if (images.length > 0) {
+     
+    // Initialize each image’s like count
+      images.forEach((_, index) => likes[index] = 0);
+    
+      if (images.length > 0) {
       renderImage();
     }
     
@@ -117,6 +125,10 @@ function renderImage() {
             imgContainer.appendChild(captionEl);  // Then caption
             imgContainer.appendChild(cameraspecsEl); // Then camera specs
         }
+
+  // Update like count and heart color for the current image
+    likeCount.textContent = likes[currentIndex];
+    heartIcon.textContent = likes[currentIndex] > 0 ? '❤️' : '♡';
     }
 }
 
@@ -179,5 +191,23 @@ imgContainer.addEventListener('touchstart', lock, false);
 imgContainer.addEventListener('touchmove', drag, false);
 imgContainer.addEventListener('touchend', move, false);
 
+
+
+// Like button 
+
+
+heartBtn.addEventListener('click', () => {
+  likes[currentIndex] += 1;
+  likeCount.textContent = likes[currentIndex];
+
+  heartIcon.textContent = '❤️';
+  heartIcon.classList.add('active');
+
+  setTimeout(() => {
+    heartIcon.classList.remove('active');
+  }, 300);
+});
+
 fetchImages();
+ 
 

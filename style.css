@@ -19,6 +19,7 @@ body{
   height: 100%;
   background-color: black;
   color: rgb(233, 233, 233);
+  border: 25px solid black ;
 }
 
 .box {
@@ -29,13 +30,15 @@ margin-left: 10px;
 margin-right: 10px;
 }
 
-#img-container {
+#img-container{
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: center;
   align-items: center; 
   overflow: hidden;   
   row-gap: 2rem;
+  border-radius: 10px ;
+  margin-top: 30px ;
 }
 
 img{
@@ -47,8 +50,5 @@ img{
   border-radius: 5px;
 }
 
-.svg {
-height: 1.5em;
-width: 1.5em;
 
 }
