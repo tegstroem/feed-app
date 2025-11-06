@@ -81,9 +81,11 @@ const likeCount = document.getElementById('likeCount');
 // intializing image index
 
 let images = [];
+let totalPages = 20;
 let currentIndex = 0;
 let isDragging = false;
 let startPosX = 0;
+let likes = [];
 
 
 
@@ -119,16 +121,18 @@ function renderImage() {
         captionEl.textContent = getCaption(currentIndex);
         cameraspecsEl.textContent = getCameraSpecs(currentIndex);
         
-        if (!imgContainer.contains(imgEl)) {
-            imgContainer.appendChild(imgEl);      // Image first
-            imgContainer.appendChild(userEl);     // Then username
-            imgContainer.appendChild(captionEl);  // Then caption
-            imgContainer.appendChild(cameraspecsEl); // Then camera specs
-        }
+        // Clear container first
+        imgContainer.innerHTML = '';
+        
+        // Append elements in desired order
+        imgContainer.appendChild(imgEl);      
+        imgContainer.appendChild(userEl);     
+        imgContainer.appendChild(captionEl);  
+        imgContainer.appendChild(cameraspecsEl); 
 
-  // Update like count and heart color for the current image
-    likeCount.textContent = likes[currentIndex];
-    heartIcon.textContent = likes[currentIndex] > 0 ? '❤️' : '♡';
+        // Update like count and heart color
+        likeCount.textContent = likes[currentIndex];
+        heartIcon.textContent = likes[currentIndex] > 0 ? '❤️' : '♡';
     }
 }
 
@@ -209,5 +213,5 @@ heartBtn.addEventListener('click', () => {
 });
 
 fetchImages();
- 
+
 
