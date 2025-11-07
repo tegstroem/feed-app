@@ -168,28 +168,46 @@ margin-top: -13rem;
   }
 }
 
+.like-wrapper {
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding-right: 8px;
+}
 
-
-
-
+#heartBtn {
+  background: none;       
+  border: none;           
+  outline: none;          
+  cursor: pointer;
+  font-size: 1.5rem;
+  padding: 0;             
+  transition: transform 0.2s ease;
+}
 
 #button {
-  padding: 8px 16px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-size: 1.2rem;
-  align-self: right;
- 
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;
+  bottom:200px;
+  padding: 0 10px;
 }
 
 #heartIcon {
   color: #000000;
 }
 
+.heart-btn:hover {
+  transform: scale(1.2);
+}
+
 #likeCount {
   color: #000;
-  font-family: sans-serif;
+  margin-left: 8px;
+  font-size: 10px;
+  
 }
 
 .user-section {

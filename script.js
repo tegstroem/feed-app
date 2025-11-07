@@ -1,20 +1,9 @@
-//import { renderPost } from './data.js';
-
 const imgContainer = document.getElementById('img-container');
 const imgEl = document.createElement('img');
 const userEl = document.createElement('h2');
 const captionEl = document.createElement('p');
 const cameraspecsEl = document.createElement('p');
 
- //data.js content starts here
-
-//export function renderPost(post) {
-  //  return {
-        // name: getUser(post.index),
-        // caption: getCaption(post.index),
-        // camera: getCameraSpecs(post.index)
-    //};
-//}
 function getUser(index) {
     const photographers = [
         "Alejandro Torres",
@@ -83,6 +72,7 @@ const likeCount = document.getElementById('likeCount');
 // intializing image index
 
 let images = [];
+
 let totalPages = 20;
 let currentIndex = 0;
 let isDragging = false;
@@ -90,36 +80,28 @@ let startPosX = 0;
 let likes = [];
 
 
+async function fetchPages(){
+  
+  try{
+    for( let page = 1; page <= totalPages; page++){
+      const res = await fetch(`https://image-feed-api.vercel.app/api/images?page=${page}`);
+      const data = await res.json();
+    const  allImages = data.data.map(img => img.image_url)
+    images = images.concat(allImages);
 
-// fetching all the images in page one.
-// Accessing the data array and mapping over the images then pusshing the images inside the array by the their url
-// then displaying the images according to it index insde the renderfeed function
+    likes = likes.concat(allImages.map(() => 0));
 
-function fetchImages(){
-    fetch('https://image-feed-api.vercel.app/api/images')
-  .then(res => res.json())
-  .then( data => {
-    images = data.data.map(img => img.image_url);
-     
-    // Initialize each image’s like count
-      images.forEach((_, index) => likes[index] = 0);
-    
-      if (images.length > 0) {
-      renderImage();
+    if(page ===1){
+      renderImage()
     }
-  })
-  .catch(error => {
-    console.log("Error while fetching API", error)
-  });
-}                           
-
-/*  }catch(error){
+    }
+  }catch(error){
     
     console.log("Error while fetching API", error)
   }finally{
-console.log("Fetching images is completed")
-  }*/
-
+ console.log("Fetching images is completed")
+  }
+}
 
 fetchPages()
 
@@ -136,32 +118,33 @@ function renderImage() {
         
         // Clear container first
         imgContainer.innerHTML = '';
+        // Create a wrapper for the like button and count
+       const likeWrapper = document.createElement('div');
+       likeWrapper.classList.add('like-wrapper');
+       likeWrapper.appendChild(heartBtn);
+       likeWrapper.appendChild(likeCount);
         
         // Append elements in desired order
-        imgContainer.appendChild(imgEl);      
+        imgContainer.appendChild(imgEl);  
+        imgContainer.appendChild(likeWrapper);    
         imgContainer.appendChild(userEl);     
         imgContainer.appendChild(captionEl);  
         imgContainer.appendChild(cameraspecsEl); 
 
         // Update like count and heart color
-        likeCount.textContent = likes[currentIndex];
-        heartIcon.textContent = likes[currentIndex] > 0 ? '❤️' : '♡';
-    }
-
+       if (likes[currentIndex] > 0) {
+          likeCount.textContent = likes[currentIndex];
+          likeCount.style.display = 'inline';
+          heartIcon.textContent = '🖤';
+}      else {
+          likeCount.style.display = 'none';
+           heartIcon.textContent = '♡';
 }
+    
+    }
+  }
   
-
-
-
-
-
-
-
-
-
-
-
-
+  
 function unify(e) {
     return e.changedTouches ? e.changedTouches[0] : e;
 }
@@ -226,10 +209,15 @@ imgContainer.addEventListener('touchend', move, false);
 
 
 heartBtn.addEventListener('click', () => {
+
+  if (typeof likes[currentIndex] !== 'number') likes[currentIndex] = 0;
+
   likes[currentIndex] += 1;
   likeCount.textContent = likes[currentIndex];
+  likeCount.style.display = 'inline'; 
 
-  heartIcon.textContent = '❤️';
+
+  heartIcon.textContent = '🖤';
   heartIcon.classList.add('active');
 
   setTimeout(() => {
@@ -237,6 +225,57 @@ heartBtn.addEventListener('click', () => {
   }, 300);
 });
 
-fetchImages();
+fetchPages()
+ 
+
+
+
+
+// The swipeRightAnimation() is to display a demo of the "swipe by touch function". It's stored in the localStorage so it only render for users who visited the app first time.
+// The setTimeout is an inbuilt method to set the time that how long each animation will last, 
+
+function swipeRightAnimation(){
+  const swipeRightDemo = document.getElementById('right-side');
+  const swipeLeftDemo = document.getElementById('left-side');
+  SwipeDemoShow = document.querySelectorAll('.animation')
+
+
+  swipeRightDemo.style.visibility = 'hidden';
+  swipeLeftDemo.style.visibility = 'hidden';
+
+
+if(!localStorage.getItem('SwipeDemoShow')) {
+
+  localStorage.setItem('SwipeDemoShow', 'true');
+
+  setTimeout(()=>{
+ imgContainer.classList.add('green-overlay', 'shake-right', );
+ swipeRightDemo.style.visibility = 'visible'  ;
+},100);
+
+
+setTimeout(()=>{
+   imgContainer.classList.remove('green-overlay', 'shake-right', );
+    swipeRightDemo.style.visibility = 'hidden';
+},4000);
+
+setTimeout(()=>{
+  imgContainer.classList.add('red-overlay', 'shake-left', );
+ swipeLeftDemo.style.animation = 'none';
+    swipeLeftDemo.offsetHeight;
+    swipeLeftDemo.style.animation = null;
+
+
+    swipeLeftDemo.style.visibility = 'visible';
+},4000);
+
+
+setTimeout(()=>{
+  imgContainer.classList.remove('red-overlay', 'shake-left', );
+  swipeLeftDemo.style.visibility = 'hidden';
+},8000);
+}
+}
+swipeRightAnimation();
 
 
