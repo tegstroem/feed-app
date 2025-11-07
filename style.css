@@ -1,3 +1,4 @@
+/* desktop display*/
 body{
   display : flex;
   flex-direction: column;
@@ -51,12 +52,37 @@ position: relative;
   border-radius: 0;
   object-fit: cover;
   display: block;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  height: 100%;
+  background-color: black;
+  color: rgb(233, 233, 233);
+  
+}
+
+h1 {
+  color: rgb(231, 231, 231);
+  font-size: medium;
+  font-family:sans-serif;
+  text-align: center;
+  padding: 1.25rem;
+}
+
+h2, p {
+  color: #000;
+  font-family: sans-serif;
+  text-align: left;
 }
 
 img{
-  display: block;
-  height: 100%;  
-  width: 95%  ;
+  display: flex;
+  height: 340px;
+  width:340px;
   object-fit: cover;
   border-radius: 10px;
   margin-top: 1rem;
@@ -114,6 +140,45 @@ img{
   justify-content: center;
   align-items: center;
   gap: 8px;
+  border-radius: .625rem;
+  margin-top: 80px;
+
+}
+
+#img-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;   
+   transition: filter 0s, transform 0s;   position: relative;
+  border-radius: .625rem;
+}
+
+
+
+#box {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(233, 233, 233);
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 20px;
+  width: 50%;
+}
+
+
+.animation {
+  position: absolute;       
+  inset: 0;                
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;     
+  z-index: 10;             
 }
 
 /*These different overlay colors applied to the card, green overlay is to demonstrate swiping to the right by touch, red overlay is to the left */
@@ -132,6 +197,7 @@ img{
 .shake-right{
    animation: shakeRightSide 2s ease-in-out 2;
   animation-delay: 0s;
+  
 }
 .shake-left{
    animation: shakeLeftSide 2s ease-in-out 2;
@@ -141,9 +207,9 @@ img{
 
 @keyframes shakeRightSide{
     0% { transform: translateX(0) rotate(0deg); }
-  25%  { transform: translateX(15px) rotate(5deg); }
-  50%  { transform: translateX(30px) rotate(10deg); }
-  75%  { transform: translateX(15px) rotate(5deg); }
+  25%  { transform: translateX(.9375rem) rotate(5deg); }
+  50%  { transform: translateX(1.875rem) rotate(10deg); }
+  75%  { transform: translateX(.9375rem) rotate(5deg); }
   100% { transform: translateX(0) rotate(0deg); }
  
 }
@@ -151,9 +217,9 @@ img{
 
 @keyframes shakeLeftSide {
   0%   { transform: translateX(0) rotate(0deg); }
-  25%  { transform: translateX(-15px) rotate(-5deg); }
-  50%  { transform: translateX(-30px) rotate(-10deg); }
-  75%  { transform: translateX(-15px) rotate(-5deg); }
+  25%  { transform: translateX(-0.9375rem) rotate(-5deg); }
+  50%  { transform: translateX(-1.875rem) rotate(-10deg); }
+  75%  { transform: translateX(-0.9375rem) rotate(-5deg); }
   100% { transform: translateX(0) rotate(0deg); }
 
 
@@ -236,16 +302,67 @@ margin-top: -13rem;
   position: relative;
   animation: moveLeft 2s ease-in-out 2;
   animation-delay: 0s;
+
+
+
+#button {
+  padding: .5rem 1rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 19.2px;
+  align-self: right;
  
 }
 
+#heartIcon {
+  color: #000000;
 
-@keyframes moveLeft {
-  from {
-    left: 0px;
-  }
-  to {
-    left: -500px;
-  }
 }
+
+#likeCount {
+  color: #000;
+  font-family: sans-serif;
+
+}
+
+.user-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: .625rem 0;
+
+}
+
+#text {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 .625rem;
+
+}
+
+/* Mobile display*/
+
+@media screen and (max-width: 37.5rem) {
+#box{
+  width: 85%;
+}
+
+img{
+  display: block;
+  height: 100%;  
+  width: 95%  ;
+  object-fit: cover;
+  border-radius: .625rem;
+  margin-top: 80px;
+  
+}
+
+
+ }
+
+
+
 
