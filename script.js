@@ -59,8 +59,6 @@ console.log("Fetching images is completed")
 fetchPages()
 
 
-
-
 // Rendering the images for each page that we fetched
 function renderImage() {
   
@@ -68,47 +66,43 @@ function renderImage() {
     if (images.length > 0) {
         imgEl.src = images[currentIndex];
         imgEl.classList.add('pic')
-        if (!imgContainer.contains(imgEl)) {
-            imgContainer.appendChild(imgEl);
-          
-        }
-     
-        // ensure likes[currentIndex] is defined
-    const currentLikes = (typeof likes[currentIndex] === 'number') ? likes[currentIndex] : 0;
-    
-    likeCount.textContent = likes[currentIndex];
-    heartIcon.textContent = likes[currentIndex] > 0 ? '🖤' : '♡';
-
-    if (currentIndex === 0 && !localStorage.getItem('SwipeDemoShown')) {
-      swipeRightAnimation();
-    }
-    }
-  }
-  
-  
         userEl.textContent = getUser(currentIndex);
         captionEl.textContent = getCaption(currentIndex);
         cameraspecsEl.textContent = getCameraSpecs(currentIndex);
         
-        // Clear container first
+// Clear container first
         imgContainer.innerHTML = '';
+
+// Create a wrapper for the like button and count
+        const likeWrapper = document.createElement('div');
+        likeWrapper.classList.add('like-wrapper');
+        likeWrapper.appendChild(heartBtn);
+        likeWrapper.appendChild(likeCount);
         
-        // Append elements in desired order
-        imgContainer.appendChild(imgEl);      
-        imgContainer.appendChild(userEl);     
-        imgContainer.appendChild(captionEl);  
-        imgContainer.appendChild(cameraspecsEl); 
+// Append elements in desired order
+        imgContainer.appendChild(imgEl);       // image first
+        imgContainer.appendChild(likeWrapper); // then heart + like count     
+        imgContainer.appendChild(userEl);      // then user
+        imgContainer.appendChild(captionEl);   // then caption
+        imgContainer.appendChild(cameraspecsEl);// then camera specs
 
-        // Update like count and heart color
-        likeCount.textContent = likes[currentIndex];
-        heartIcon.textContent = likes[currentIndex] > 0 ? '❤️' : '♡';
-
-
-
-    }
-  swipeRightLeftAnimation()
-
+// Update like count and heart color
+       
+       if (likes[currentIndex] > 0) {
+          likeCount.textContent = likes[currentIndex];
+          likeCount.style.display = 'inline';
+          heartIcon.textContent = '🖤';
+         } 
+       else {
+           likeCount.style.display = 'none';
+           heartIcon.textContent = '♡';
 }
+    }
+           swipeRightLeftAnimation()
+       
+      }
+
+
   
 
  //data.js content starts here
@@ -251,9 +245,11 @@ heartBtn.addEventListener('click', () => {
 
   likes[currentIndex] += 1;
   likeCount.textContent = likes[currentIndex];
-
+  likeCount.style.display = 'inline';
+  
   heartIcon.textContent = '🖤';
   heartIcon.classList.add('active');
+  
 
   setTimeout(() => {
     heartIcon.classList.remove('active');
@@ -262,7 +258,7 @@ heartBtn.addEventListener('click', () => {
 
 fetchPages()
  
-fetchPages();
+
 
 
 
@@ -318,7 +314,4 @@ setTimeout(()=>{
 },8000);
 }
 }
-swipeRightAnimation();
-
-
-
+}
