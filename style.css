@@ -1,49 +1,69 @@
 /* desktop display*/
 
 
-html, body{
-  margin: 10px;
+ body, html{
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   box-sizing: border-box;
-  height: 100vh;
   background-color: rgb(10, 7, 7);
-  max-width: 100%;
-  display: flex;
-  
-
-  
+  height: 100vh;
+  margin: 0;
+  padding: 0;
   
 }
 
-.main-container {
-  display: flexbox;
-  max-width: 200;
+
+#box {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(233, 233, 233);
+  border-radius: 5px;
   justify-content: center;
   align-items: center;
-  justify-items: center;
-  align-content: center;
+  max-width: 50vh;
+
 }
 
 
-.wrapper {
+img{
+  display:flex;
+  height: 100%;  
+  max-width: 50%;
+  object-fit: cover;
+  border-radius: .625rem;
+  margin-top: 80px; 
+  max-height: 90vh;
+  max-block-size: 90vh;
 
-  max-width: 200%;
-  max-height: 200%;
-}
-.hambuger {
   
+}
+
+/* need help to position the menu on the left corner of the block*/
+
+
+.hambuger-menu, .h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: rgb(231, 231, 231);
+  margin-bottom: 0%;
+
+
+
+}
+
+
+
+
+.hambuger {
   margin-top: 10px;
   height: 2px;
   width: 15px;
   background: #ebe5e5;
   border-radius: 10% / 90%;
-  flex-wrap: nowrap;
- 
-
-
 }
 
 
@@ -52,25 +72,8 @@ ul {
   cursor: pointer;
 }
 
-.hambuger {
-  
-  margin-top: 1px;
-  height: 2px;
-  width: 1px;
-  background: #070505;
-  border-radius: 20px / 90%;
-  position: relative;
-
-}
 
 
-h1 {
-  color: rgb(231, 231, 231);
-  font-size: medium;
-  font-family:sans-serif;
-  text-align: center;
-  padding: 1.25rem;
-}
 
 h2, p {
   color: #000;
@@ -78,15 +81,6 @@ h2, p {
   text-align: left;
 }
 
-img{
-  display: flex;
-  height: 340px;
-  width:340px;
-  object-fit: cover;
-  border-radius: .625rem;
-  margin-top: 80px;
-
-}
 
 #img-container {
   position: relative;
@@ -94,24 +88,11 @@ img{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  overflow: hidden;   
-   transition: filter 0s, transform 0s;   position: relative;
+  overflow: hidden;  
   border-radius: .625rem;
+  max-width: 100%;
 }
 
-
-
-#box {
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(233, 233, 233);
-  border-radius: 5px;
-  margin-left: 10px;
-  margin-right: 10px;
-  padding: 20px;
-  width: 50%;
-}
 
 
 .animation {
@@ -197,7 +178,7 @@ img{
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: .625rem 0;
+  padding:
 
 }
 
@@ -205,7 +186,6 @@ img{
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0 .625rem;
 
 }
 
@@ -216,15 +196,6 @@ img{
   width: 85%;
 }
 
-img{
-  display: block;
-  height: 100%;  
-  width: 95%  ;
-  object-fit: cover;
-  border-radius: .625rem;
-  margin-top: 80px;
-  
-}
 
 
  }
