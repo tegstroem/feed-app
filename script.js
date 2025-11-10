@@ -38,6 +38,8 @@ async function fetchPages(){
     const  allImages = data.data.map(img => img.image_url)
     images = images.concat(allImages);
 
+    likes = likes.concat(allImages.map(() => 0));
+
      // Initialize each image’s like count
       images.forEach((_, index) => likes[index] = 0);
     
@@ -57,37 +59,50 @@ console.log("Fetching images is completed")
 fetchPages()
 
 
-
-
 // Rendering the images for each page that we fetched
 function renderImage() {
   
    
     if (images.length > 0) {
         imgEl.src = images[currentIndex];
+        imgEl.classList.add('pic')
         userEl.textContent = getUser(currentIndex);
         captionEl.textContent = getCaption(currentIndex);
         cameraspecsEl.textContent = getCameraSpecs(currentIndex);
         
-        // Clear container first
+// Clear container first
         imgContainer.innerHTML = '';
+
+// Create a wrapper for the like button and count
+        const likeWrapper = document.createElement('div');
+        likeWrapper.classList.add('like-wrapper');
+        likeWrapper.appendChild(heartBtn);
+        likeWrapper.appendChild(likeCount);
         
-        // Append elements in desired order
-        imgContainer.appendChild(imgEl);      
-        imgContainer.appendChild(userEl);     
-        imgContainer.appendChild(captionEl);  
-        imgContainer.appendChild(cameraspecsEl); 
+// Append elements in desired order
+        imgContainer.appendChild(imgEl);       // image first
+        imgContainer.appendChild(likeWrapper); // then heart + like count     
+        imgContainer.appendChild(userEl);      // then user
+        imgContainer.appendChild(captionEl);   // then caption
+        imgContainer.appendChild(cameraspecsEl);// then camera specs
 
-        // Update like count and heart color
-        likeCount.textContent = likes[currentIndex];
-        heartIcon.textContent = likes[currentIndex] > 0 ? '❤️' : '♡';
-
-
-
-    }
-  swipeRightLeftAnimation()
-
+// Update like count and heart color
+       
+       if (likes[currentIndex] > 0) {
+          likeCount.textContent = likes[currentIndex];
+          likeCount.style.display = 'inline';
+          heartIcon.textContent = '🖤';
+         } 
+       else {
+           likeCount.style.display = 'none';
+           heartIcon.textContent = '♡';
 }
+    }
+           swipeRightLeftAnimation()
+       
+      }
+
+
   
 
  //data.js content starts here
@@ -225,18 +240,25 @@ imgContainer.addEventListener('touchend', move, false);
 
 
 heartBtn.addEventListener('click', () => {
+
+  if (typeof likes[currentIndex] !== 'number') likes[currentIndex] = 0;
+
   likes[currentIndex] += 1;
   likeCount.textContent = likes[currentIndex];
-
-  heartIcon.textContent = '❤️';
+  likeCount.style.display = 'inline';
+  
+  heartIcon.textContent = '🖤';
   heartIcon.classList.add('active');
+  
 
   setTimeout(() => {
     heartIcon.classList.remove('active');
   }, 300);
 });
 
-fetchPages();
+fetchPages()
+ 
+
 
 
 
@@ -249,23 +271,23 @@ fetchPages();
 function swipeRightLeftAnimation(){
   const swipeRightDemo = document.getElementById('right-side');
   const swipeLeftDemo = document.getElementById('left-side');
-SwipeDemoShow = document.querySelectorAll('.animation')
+  SwipeDemoShow = document.querySelectorAll('.animation')
 
 
-swipeRightDemo.style.visibility = 'hidden';
-swipeLeftDemo.style.visibility = 'hidden';
+  swipeRightDemo.style.visibility = 'hidden';
+  swipeLeftDemo.style.visibility = 'hidden';
 
 
-if(!localStorage.getItem(SwipeDemoShow)){
-  localStorage.setItem(SwipeDemoShow, "true");
+if(!localStorage.getItem('SwipeDemoShow')) {
+
+  localStorage.setItem('SwipeDemoShow', 'true');
+
 
 
   setTimeout(()=>{
  imgContainer.classList.add('green-overlay', 'shake-right', );
  swipeRightDemo.style.visibility = 'visible'  ;
-
-
-},100)
+},100);
 
 
 setTimeout(()=>{
@@ -290,8 +312,6 @@ setTimeout(()=>{
   swipeLeftDemo.style.visibility = 'hidden';
 },8000);
 }
-
-
 }
 
 
