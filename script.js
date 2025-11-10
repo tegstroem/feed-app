@@ -90,7 +90,7 @@ function renderImage() {
        if (likes[currentIndex] > 0) {
           likeCount.textContent = likes[currentIndex];
           likeCount.style.display = 'inline';
-          heartIcon.textContent = '🖤';
+          heartIcon.textContent = '';
          } 
        else {
            likeCount.style.display = 'none';
@@ -136,31 +136,25 @@ function getCaption(index) {
 
 function getCameraSpecs(index) {
     const specs = [
-        "Sony A7III | 24-70mm f/2.8",
-        "Canon R5 | 16-35mm f/2.8",
-        "Nikon Z6 | 70-200mm f/4",
-        "Fujifilm X-T4 | 56mm f/1.2",
-        "Sony A7R V | 100-400mm GM",
-        "Canon EOS R6 Mark II | 35mm f/1.4",
-        "Sony A7C II | 85mm f/1.8",
-        "Nikon Z8 | 24-120mm f/4",
-        "Fujifilm X-H2S | 18-55mm f/2.8-4",
-        "Panasonic Lumix S5II | 50mm f/1.4",
-        "Leica Q3 | 28mm f/1.7",
-        "OM System OM-1 | 12-40mm f/2.8 PRO",
-        "Canon EOS R3 | 100-500mm f/4.5-7.1L",
-        "Sony FX3 | 24mm f/1.4 GM",
-        "Nikon Zf | 40mm f/2"
-        ];
+        "📷 Sony A7III | 24-70mm f/2.8",
+        "📷 Canon R5 | 16-35mm f/2.8",
+        "📷 Nikon Z6 | 70-200mm f/4",
+        "📷 Fujifilm X-T4 | 56mm f/1.2",
+        "📷 Sony A7R V | 100-400mm GM",
+        "📷 Canon EOS R6 Mark II | 35mm f/1.4",
+        "📷 Sony A7C II | 85mm f/1.8",
+        "📷 Nikon Z8 | 24-120mm f/4",
+        "📷 Fujifilm X-H2S | 18-55mm f/2.8-4",
+        "📷 Panasonic Lumix S5II | 50mm f/1.4",
+        "📷 Leica Q3 | 28mm f/1.7",
+        "📷 OM System OM-1 | 12-40mm f/2.8 PRO",
+        "📷 Canon EOS R3 | 100-500mm f/4.5-7.1L",
+        "📷 Sony FX3 | 24mm f/1.4 GM",
+        "📷 Nikon Zf | 40mm f/2"
+    ];
 
-    return specs[index] || "Camera info unavailable";
+    return specs[index] || "📷 Camera info unavailable";
 }
-
-
-
-
-
-
 
 
 function unify(e) {
@@ -244,13 +238,7 @@ heartBtn.addEventListener('click', () => {
 fetchPages()
  
 
-
-
-
-
-
-
-// The swipeRightAnimation() is to display a demo of the "swipe by touch function". It's stored in the localStorage so it only render for users who visited the app first time.
+//The swipeRightAnimation() is to display a demo of the "swipe by touch function". It's stored in the localStorage so it only render for users who visited the app first time.
 
 
 function swipeRightLeftAnimation(){
@@ -298,5 +286,3 @@ setTimeout(()=>{
 },8000);
 }
 }
-
-
