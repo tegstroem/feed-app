@@ -6,6 +6,25 @@ const userEl = document.createElement('h2');
 const captionEl = document.createElement('p');
 const cameraspecsEl = document.createElement('p');
 
+// Like button elements
+const heartBtn = document.getElementById('heartBtn');
+const heartIcon = document.getElementById('heartIcon');
+const likeCount = document.getElementById('likeCount');
+
+//Creating an empty array to push the images in
+//Intializing currentPages to start with page 1
+//Intializing totalPages and giving it value of 20 pages
+// intializing image index
+
+let images = [];
+let totalPages = 20;
+let currentIndex = 0;
+let isDragging = false;
+let startPosX = 0;
+let likes = [];
+
+
+
  //data.js content starts here
 
 /*export function renderPost(post) {
@@ -30,7 +49,7 @@ function getUser(index) {
         "Elena Petrova"
         ];
 
-    return photographers[index] || "Unknown Photographer";
+    return photographers[index] || "Tova Borglund";
 }
 
 function getCaption(index) {
@@ -68,27 +87,8 @@ function getCameraSpecs(index) {
         "Nikon Zf | 40mm f/2"
         ];
 
-    return specs[index] || "Camera info unavailable";
+    return specs[index] || "Nikomat FTn | 50mm f/1.4";
 }
-
-// Like button elements
-const heartBtn = document.getElementById('heartBtn');
-const heartIcon = document.getElementById('heartIcon');
-const likeCount = document.getElementById('likeCount');
-
-
-
-//Creating an empty array to push the images in
-//Intializing currentPages to start with page 1
-//Intializing totalPages and giving it value of 20 pages
-// intializing image index
-
-let images = [];
-let totalPages = 20;
-let currentIndex = 0;
-let isDragging = false;
-let startPosX = 0;
-let likes = [];
 
 
 
