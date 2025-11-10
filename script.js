@@ -101,19 +101,6 @@ function renderImage() {
        
       }
 
-
-  
-
- //data.js content starts here
-
-/*export function renderPost(post) {
-    return {
-    name: getUser(post.index),
-    caption: getCaption(post.index),
-    camera: getCameraSpecs(post.index)
-    };
-}*/
-
 function getUser(index) {
     const photographers = [
         "Alejandro Torres",
