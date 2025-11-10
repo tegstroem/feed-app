@@ -1,14 +1,10 @@
 /* desktop display*/
 body{
   margin:0;
-  display : flex;
-  flex-direction: column;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  flex-direction: column;
   box-sizing: border-box;
-  background-color: rgb(10, 7, 7);
+  background-color: black;
   height: 100%;
   border: 25px solid black ;
 }
@@ -17,13 +13,14 @@ body{
 
 h1 {
   color: rgb(231, 231, 231);
-  font-size: medium;
+  font-size: large;
   font-family:sans-serif;
   text-align: center;
-  padding: 1.25rem;
+  padding: 1rem;
 }
 
-h2, p {
+
+p {
   color: #000;
   font-family: sans-serif;
   text-align: left;
@@ -31,31 +28,13 @@ h2, p {
 
 img{
   display: block;
-  height: 340px;
+  height: 100%;
   width:340px;
   object-fit: cover;
   border-radius: 625rem;
-  margin-top: 80px;
+
 
 }
-
-
-
-
-#img-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  overflow: hidden;   
-  transition: filter 0s, transform 0s;  
-  position: relative;
-  border-radius: .625rem;
-}
-
-
 
 #box {
   display: flex;
@@ -64,7 +43,7 @@ img{
   border-radius: 5px;
   margin-left: 10px;
   margin-right: 10px;
-  padding: 20px;
+  padding: 10px;
   width: 50%;
 
 }
@@ -89,13 +68,15 @@ ul {
 .hambuger-menu .menu {
     font-size: 28px;   
     cursor: pointer;    
-    color: white;        
+    color: rgb(212, 212, 212);        
     user-select: none;  
 
 }
 
 .hambuger-menu .menu:hover {
-    color: #555;        
+    color: #ffffff;
+    text-shadow: 2px 2px 10px #ffffff;
+    filter: dropshadow(color=#ffffff, offx=4, offy=4);
 }
 
 
@@ -123,6 +104,9 @@ img {
   overflow: hidden;   
   transition: filter 0s, transform 0s;   position: relative;
   border-radius: 5px;
+  color: #000000;
+  font-family: sans-serif;
+  text-align: left;
 }
 
 img{
@@ -152,20 +136,6 @@ img{
   font-family: sans-serif;
 }
 
-.user-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding-left: 5px;
-}
-
-#text {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 0 10px;
-}
 
 /*These different overlay colors applied to the card, green overlay is to demonstrate swiping to the right by touch, red overlay is to the left */
 #img-container.green-overlay{
@@ -207,7 +177,6 @@ img{
   50%  { transform: translateX(-1.875rem) rotate(-10deg); }
   75%  { transform: translateX(-0.9375rem) rotate(-5deg); }
   100% { transform: translateX(0) rotate(0deg); }
-
 
 }
 
@@ -259,21 +228,10 @@ img{
 
 }
 
-.user-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding:.625rem 0;
-
-}
-
 #text {
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0 .625rem;
-
 }
 
 /* Mobile display*/
@@ -288,16 +246,10 @@ img{
  }
 
 
-
-
-
-
 #right-side{
   position: relative;
   animation: moveRight 2s ease-in-out 2;
   animation-delay: 0s;
-
-
 }
 
 @keyframes moveRight {

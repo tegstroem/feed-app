@@ -61,7 +61,6 @@ fetchPages()
 
 // Rendering the images for each page that we fetched
 function renderImage() {
-  
    
     if (images.length > 0) {
         imgEl.src = images[currentIndex];
