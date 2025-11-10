@@ -3,19 +3,13 @@ body{
   margin:0;
   display : flex;
   flex-direction: column;
-
-
- body, html{
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   box-sizing: border-box;
   background-color: rgb(10, 7, 7);
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  
+  height: 100%;
   
 }
 
@@ -36,7 +30,7 @@ h2, p {
 }
 
 img{
-  display: flex;
+  display: block;
   height: 340px;
   width:340px;
   object-fit: cover;
@@ -56,7 +50,8 @@ img{
   align-items: center;
   width: 100%;
   overflow: hidden;   
-   transition: filter 0s, transform 0s;   position: relative;
+  transition: filter 0s, transform 0s;  
+  position: relative;
   border-radius: .625rem;
 }
 
@@ -67,79 +62,41 @@ img{
   flex-direction: column;
   background-color: rgb(233, 233, 233);
   border-radius: 5px;
-  justify-content: center;
-  align-items: center;
-  max-width: 50vh;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 20px;
+  width: 50%;
 
 }
-
-
-img{
-  display:flex;
-  height: 100%;  
-  max-width: 50%;
-  object-fit: cover;
-  border-radius: .625rem;
-  margin-top: 80px; 
-  max-height: 90vh;
-  max-block-size: 90vh;
-
-  
-}
-
-/* need help to position the menu on the left corner of the block*/
-
-
-.hambuger-menu, .h1 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  color: rgb(231, 231, 231);
-  margin-bottom: 0%;
-
-
-
-}
-
-
-
-
-.hambuger {
-  margin-top: 10px;
-  height: 2px;
-  width: 15px;
-  background: #ebe5e5;
-  border-radius: 10% / 90%;
-}
-
 
 ul {
   list-style: none;
   cursor: pointer;
 }
 
+/* need help to position the menu on the left corner of the block*/
 
 
+.hambuger-menu {
+  position: absolute; 
+  top: 20px;          
+  left: 20px;        
+  z-index: 1000;
+  
 
-h2, p {
-  color: #000;
-  font-family: sans-serif;
-  text-align: left;
 }
 
+.hambuger-menu .menu {
+    font-size: 28px;   
+    cursor: pointer;    
+    color: white;        
+    user-select: none;  
 
-#img-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;  
-  border-radius: .625rem;
-  max-width: 100%;
 }
 
+.hambuger-menu .menu:hover {
+    color: #555;        
+}
 
 
 .animation {
@@ -215,7 +172,7 @@ h2, p {
   margin-top: 8px;
   margin-bottom: 8px;
   padding-right: 8px;
-  width:70%;
+  width:100%;
 }
 
 #heartBtn {
@@ -249,7 +206,7 @@ h2, p {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding:
+  padding:.625rem 0;
 
 }
 
@@ -257,6 +214,7 @@ h2, p {
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding: 0 .625rem;
 
 }
 

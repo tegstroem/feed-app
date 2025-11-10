@@ -281,8 +281,7 @@ function swipeRightLeftAnimation(){
 if(!localStorage.getItem('SwipeDemoShow')) {
 
   localStorage.setItem('SwipeDemoShow', 'true');
-if(!localStorage.getItem(SwipeDemoShow)){
-  localStorage.setItem(SwipeDemoShow, "true");
+
 
 
   setTimeout(()=>{
