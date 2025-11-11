@@ -146,17 +146,34 @@ h2, p {
 
 }
 
-
-
-
 #button {
-  padding: .5rem 1rem;
+  display: flex;
+  justify-content: flex-end; /* Move heart button to the right */
+  align-items: center;
+  margin-top: 10px;
+  padding: 0 10px;
+}
+
+.like-wrapper {
+  display: flex;
+  justify-content: flex-end; /* Align heart button to the right */
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding-right: 8px;
+  width:100%;
+}
+
+#heartBtn {
+  background: none;
   border: none;
-  background: transparent;
   cursor: pointer;
-  font-size: 19.2px;
-  align-self: right;
- 
+  font-size: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.heart-btn:hover {
+  transform: scale(1.2);
 }
 
 #heartIcon {
@@ -166,7 +183,9 @@ h2, p {
 
 #likeCount {
   color: #000;
-  font-family: sans-serif;
+  font-size: 1rem;
+  margin-left: 6px;
+  display: none;
 
 }
 
@@ -175,7 +194,7 @@ h2, p {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding:
+  padding:.625rem 0;
 }
 
 #text {
