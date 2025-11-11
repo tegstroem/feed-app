@@ -1,33 +1,38 @@
 /* desktop display*/
 
-
  body, html{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   box-sizing: border-box;
   background-color: rgb(10, 7, 7);
-   overflow: hidden;
-   max-height: 200vh;
-
-  
+  overflow: hidden;
+  margin-left: 10px;
+  margin-right: 10px;
   
 }
 
-.menu{
+
+header {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  color: rgb(231, 231, 231);
+  justify-content: space-between;
   margin: 0%;
   padding: 0%;
-
-
-
 }
 
+header p{
+  color: rgb(231, 231, 231);
+  font-size: x-large;
+}
+  
+
+.hambuger-menu .menu:hover {
+    color: #ffffff;
+    text-shadow: 2px 2px 10px #ffffff;
+    filter: dropshadow(color=#ffffff, offx=4, offy=4);
+}
+
+
 h1 {
+  font-family: sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,31 +56,33 @@ h1 {
   display: flex;
   flex-direction: column;
   background-color: rgb(233, 233, 233);
-  border-radius: 5px;
+  border-radius: 10px;
   justify-content: center;
   align-items: center;
-  max-width: 100%;
-  max-height: 150%;
   object-fit: cover;
- padding: 10%;
-max-block-size: 100%;
 
 }
 
+img {
+  width: 100%;
+  border-radius: 10px;
+}
 
-
+.caption-container {
+line-height: 20px;
+padding-left: 5px;
+margin-top: -50px;
+}
   
 
 /* need help to position the menu on the left corner of the block*/
-
-
-
 
 
 h2, p {
   color: #000;
   font-family: sans-serif;
   text-align: left;
+  
 }
 
 
@@ -84,12 +91,7 @@ h2, p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;  
-  max-width: 80%;
-  object-fit: cover;
-  block-size: 80vh;
 }
-
 
 
 .animation {
@@ -118,8 +120,8 @@ h2, p {
 .shake-right{
    animation: shakeRightSide 2s ease-in-out 2;
   animation-delay: 0s;
-  
 }
+
 .shake-left{
    animation: shakeLeftSide 2s ease-in-out 2;
   animation-delay: 0s;
@@ -132,7 +134,6 @@ h2, p {
   50%  { transform: translateX(1.875rem) rotate(10deg); }
   75%  { transform: translateX(.9375rem) rotate(5deg); }
   100% { transform: translateX(0) rotate(0deg); }
- 
 }
 
 
@@ -142,11 +143,7 @@ h2, p {
   50%  { transform: translateX(-1.875rem) rotate(-10deg); }
   75%  { transform: translateX(-0.9375rem) rotate(-5deg); }
   100% { transform: translateX(0) rotate(0deg); }
-
-
 }
-
-
 
 #button {
   display: flex;
@@ -154,6 +151,7 @@ h2, p {
   align-items: center;
   margin-top: 10px;
   padding: 0 10px;
+  
 }
 
 
@@ -190,31 +188,8 @@ h2, p {
   color: #000000;
 }
 
-.user-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-
-}
-
-#text {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-
-}
-
-/* Mobile display*/
-
-@media screen and (max-width: 37.5rem) {
-#box{
-  width: 85%;
-}
 
 
-
-}
 
 
 

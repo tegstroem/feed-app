@@ -3,6 +3,10 @@ const imgEl = document.createElement('img');
 const userEl = document.createElement('h2');
 const captionEl = document.createElement('p');
 const cameraspecsEl = document.createElement('p');
+const captionContainer = document.createElement('div');
+
+captionContainer.append(userEl, cameraspecsEl,captionEl);
+captionContainer.classList.add('caption-container');
 
 
 // Like button elements
@@ -80,9 +84,7 @@ function renderImage() {
 // Append elements in desired order
         imgContainer.appendChild(imgEl);       // image first
         imgContainer.appendChild(likeWrapper); // then heart + like count     
-        imgContainer.appendChild(userEl);      // then user
-        imgContainer.appendChild(captionEl);   // then caption
-        imgContainer.appendChild(cameraspecsEl);// then camera specs
+        imgContainer.appendChild(captionContainer);
 
 // Update like count and heart color
        
@@ -114,16 +116,16 @@ function renderImage() {
 //}
 function getUser(index) {
     const photographers = [
-        "Alejandro Torres",
-        "Mina Kobayashi",
-        "Luca Moretti",
-        "Amara Singh",
-        "Jonas Müller",
-        "Camila Duarte",
-        "Noah Andersen",
-        "Layla Haddad",
-        "Tomasz Kowalski",
-        "Elena Petrova"
+        "by Alejandro Torres",
+        "by Mina Kobayashi",
+        "by Luca Moretti",
+        "by Amara Singh",
+        "by Jonas Müller",
+        "by Camila Duarte",
+        "by Noah Andersen",
+        "by Layla Haddad",
+        "by Tomasz Kowalski",
+        "by Elena Petrova"
         ];
 
     return photographers[index] || "Unknown Photographer";
@@ -147,21 +149,21 @@ function getCaption(index) {
 
 function getCameraSpecs(index) {
     const specs = [
-        "Sony A7III | 24-70mm f/2.8",
-        "Canon R5 | 16-35mm f/2.8",
-        "Nikon Z6 | 70-200mm f/4",
-        "Fujifilm X-T4 | 56mm f/1.2",
-        "Sony A7R V | 100-400mm GM",
-        "Canon EOS R6 Mark II | 35mm f/1.4",
-        "Sony A7C II | 85mm f/1.8",
-        "Nikon Z8 | 24-120mm f/4",
-        "Fujifilm X-H2S | 18-55mm f/2.8-4",
-        "Panasonic Lumix S5II | 50mm f/1.4",
-        "Leica Q3 | 28mm f/1.7",
-        "OM System OM-1 | 12-40mm f/2.8 PRO",
-        "Canon EOS R3 | 100-500mm f/4.5-7.1L",
-        "Sony FX3 | 24mm f/1.4 GM",
-        "Nikon Zf | 40mm f/2"
+        "📷 Sony A7III | 24-70mm f/2.8",
+        "📷 Canon R5 | 16-35mm f/2.8",
+        "📷 Nikon Z6 | 70-200mm f/4",
+        "📷 Fujifilm X-T4 | 56mm f/1.2",
+        "📷 Sony A7R V | 100-400mm GM",
+        "📷 Canon EOS R6 Mark II | 35mm f/1.4",
+        "📷 Sony A7C II | 85mm f/1.8",
+        "📷 Nikon Z8 | 24-120mm f/4",
+        "📷 Fujifilm X-H2S | 18-55mm f/2.8-4",
+        "📷 Panasonic Lumix S5II | 50mm f/1.4",
+        "📷 Leica Q3 | 28mm f/1.7",
+        "📷 OM System OM-1 | 12-40mm f/2.8 PRO",
+        "📷 Canon EOS R3 | 100-500mm f/4.5-7.1L",
+        "📷 Sony FX3 | 24mm f/1.4 GM",
+        "📷 Nikon Zf | 40mm f/2"
         ];
 
     return specs[index] || "Camera info unavailable";
