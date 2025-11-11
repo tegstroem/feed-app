@@ -5,6 +5,11 @@ const captionEl = document.createElement('p');
 const cameraspecsEl = document.createElement('p');
 const captionContainer = document.createElement('div');
 
+// toggle declarations
+const toggle = document.getElementById('toggleDark');
+const body = document.querySelector('html');
+
+
 captionContainer.append(userEl, cameraspecsEl,captionEl);
 captionContainer.classList.add('caption-container');
 
@@ -257,9 +262,23 @@ heartBtn.addEventListener('click', () => {
 });
 
 fetchPages()
- 
 
 
+
+
+// Add a click event listener to the button.
+toggle.addEventListener('click', function(){
+    this.classList.toggle('bi-moon');
+    if(this.classList.toggle('bi-brightness-high-fill')){
+        body.style.background = 'white';
+        body.style.color = 'black';
+        body.style.transition = '2s';
+    }else{
+        body.style.background = 'black';
+        body.style.color = 'white';
+        body.style.transition = '2s';
+    }
+});
 
 
 
