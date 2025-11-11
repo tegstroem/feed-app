@@ -3,10 +3,11 @@
  body, html{
   box-sizing: border-box;
   background-color: rgb(10, 7, 7);
-  overflow: hidden;
+  overflow-x: hidden;
   margin-left: 10px;
   margin-right: 10px;
-  
+  height: 100%;
+
 }
 
 
@@ -93,7 +94,7 @@ h2, p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  text-align: left;
 }
 
 
@@ -200,8 +201,19 @@ i{
 };
 
 
+.comment-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  line-height: 1px;
+  margin-top: 30px; 
+padding: 20px 10px 20px 10px;
+background-color: #dfdfdffb;
+}
 
-
-
+.comment-text h3{
+  margin-top: 10px;
+}
 
 

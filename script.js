@@ -13,6 +13,15 @@ const body = document.querySelector('html');
 captionContainer.append(userEl, cameraspecsEl,captionEl);
 captionContainer.classList.add('caption-container');
 
+const commentSection = document.createElement('div');
+commentSection.classList.add('comment-text');
+const commentStar = document.createElement('p');
+const comment = document.createElement('p');
+const commenter = document.createElement('h3');
+commenter.classList.add('commenter');
+commentSection.append(commentStar,commenter, comment);
+
+
 
 // Like button elements
 const heartBtn = document.getElementById('heartBtn');
@@ -32,7 +41,7 @@ let currentIndex = 0;
 let isDragging = false;
 let startPosX = 0;
 let likes = [];
-
+let comments = [];
 
 
 
@@ -46,10 +55,13 @@ async function fetchPages(){
     images = images.concat(allImages);
 
     likes = likes.concat(allImages.map(() => 0));
-
+     
+    
      // Initialize each image’s like count
       images.forEach((_, index) => likes[index] = 0);
-    
+
+     const pageComments = data.data.flatMap(img => img.comments || []);comments = comments.concat(pageComments);
+
     
     if(page ===1){
       renderImage()
@@ -76,7 +88,11 @@ function renderImage() {
         userEl.textContent = getUser(currentIndex);
         captionEl.textContent = getCaption(currentIndex);
         cameraspecsEl.textContent = getCameraSpecs(currentIndex);
+        commentStar.textContent = getStars(currentIndex);
+        commenter.textContent = `${comments[currentIndex].commenter_name}`
+        comment.textContent = `${comments[currentIndex].comment}`
         
+      
 // Clear container first
         imgContainer.innerHTML = '';
 
@@ -90,6 +106,8 @@ function renderImage() {
         imgContainer.appendChild(imgEl);       // image first
         imgContainer.appendChild(likeWrapper); // then heart + like count     
         imgContainer.appendChild(captionContainer);
+        
+      imgContainer.appendChild(commentSection)
 
 // Update like count and heart color
        
@@ -119,6 +137,28 @@ function renderImage() {
         // camera: getCameraSpecs(post.index)
     //};
 //}
+// Function that hold an array of stars
+function getStars(index) {
+    const stars = [
+        "⭐⭐⭐⭐★",
+        "⭐⭐⭐★★",
+        "⭐★★★★",
+        "⭐⭐★★★",
+        "⭐⭐⭐⭐⭐",
+        "⭐⭐★★★",
+        "⭐⭐⭐⭐★",
+        "⭐⭐⭐⭐⭐",
+        "⭐⭐⭐★★",
+        "⭐★★★★",
+          "⭐⭐⭐⭐★",
+        "⭐⭐⭐⭐⭐",
+          "⭐⭐⭐⭐★",
+        "⭐⭐⭐⭐⭐",
+        ];
+
+    return stars[index] || "Unknown reviews";
+}
+
 function getUser(index) {
     const photographers = [
         "by Alejandro Torres",
