@@ -1,5 +1,3 @@
-//import { renderPost } from './data.js';
-
 const imgContainer = document.getElementById('img-container');
 const imgEl = document.createElement('img');
 const userEl = document.createElement('h2');
