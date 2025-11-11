@@ -71,7 +71,7 @@ img {
 .caption-container {
 line-height: 20px;
 padding-left: 5px;
-margin-top: -50px;
+margin-top: -40x;
 }
   
 
@@ -176,9 +176,10 @@ h2, p {
 
 #likeCount {
   color: #000;
-  font-size: 1rem;
-  margin-left: 6px;
+  font-size: 1.2rem;
+  margin-right: 10px;
   display: none;
+  font-family: sans-serif;
 }
 
 .heart-btn:hover {
