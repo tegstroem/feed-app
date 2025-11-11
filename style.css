@@ -10,11 +10,12 @@ body{
   border: 25px solid black ;
 }
 
-.main-container {
+.wrapper {
+  align-items: center;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Full viewport height */
-  width: 100vw;  /* Full viewport width */
+  height: 100vh;
 }
 
 
@@ -31,15 +32,10 @@ p {
   color: #000;
   font-family: sans-serif;
   text-align: left;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-img{
-  display: block;
-  height: 100%;
-  width:340px;
-  object-fit: cover;
-  border-radius: 625rem;
-}
 
 #box {
   display: flex;
@@ -48,7 +44,8 @@ img{
   border-radius: 10px;
   margin-left: 10px;
   margin-right: 10px;
-  padding-top: 20px;
+  align-items: center;
+  
 }
 
 ul {
@@ -88,13 +85,6 @@ ul {
   inset: 0;                
 }
 
-img {
-  display: block;
-  height: 300px;  
-  width: 100%  ;
-  object-fit: cover;
-  border-radius: 5px;
-}
 
 #img-container {
   display: flex;
@@ -112,7 +102,7 @@ img {
   text-align: left;
 }
 
-img{
+img {
   display: block;
   height: 100%;  
   width: 100%  ;
@@ -120,14 +110,7 @@ img{
   border-radius: 5px;
 }
 
-
-
-  
-
 /* need help to position the menu on the left corner of the block*/
-
-
-
 
 
 h2, p {
@@ -135,19 +118,6 @@ h2, p {
   font-family: sans-serif;
   text-align: left;
 }
-
-
-#img-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;  
-  max-width: 80%;
-  object-fit: cover;
-  block-size: 80vh;
-}
-
 
 
 .animation {
@@ -201,10 +171,7 @@ h2, p {
   75%  { transform: translateX(-0.9375rem) rotate(-5deg); }
   100% { transform: translateX(0) rotate(0deg); }
 
-
 }
-
-
 
 #button {
   display: flex;
@@ -213,6 +180,7 @@ h2, p {
   margin-top: 10px;
   padding: 0 10px;
 }
+
 .like-wrapper {
   display: flex;
   justify-content: flex-end; /* Align heart button to the right */
@@ -246,7 +214,6 @@ h2, p {
   display: none;
 }
 
-
 #text {
   display: flex;
   flex-direction: column;
@@ -256,14 +223,14 @@ h2, p {
 
 /* Mobile display*/
 
-@media screen and (max-width: 37.5rem) {
+/*@media screen and (max-width: 37.5rem) {
 #box{
   width: 85%;
-}
+}*/
 
 
 
-}
+
 
 
 
