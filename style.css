@@ -106,7 +106,7 @@ img {
   width: 100%;
   overflow: hidden;   
   transition: filter 0s, transform 0s;   position: relative;
-  border-radius: ;
+  border-radius: 10px;
   color: #000000;
   font-family: sans-serif;
   text-align: left;
@@ -246,13 +246,6 @@ h2, p {
   display: none;
 }
 
-.user-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding:
-}
 
 #text {
   display: flex;
