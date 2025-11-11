@@ -1,6 +1,6 @@
 /* desktop display*/
 
- body, html{
+body, html{
   box-sizing: border-box;
   background-color: rgb(10, 7, 7);
   overflow: hidden;
@@ -9,16 +9,13 @@
   
 }
 
-
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0%;
-  padding: 0%;
 }
 
-header p{
+header p {
   color: rgb(231, 231, 231);
   font-size: x-large;
 }
@@ -53,18 +50,24 @@ h1 {
 
 
 #box {
-  display: flex;
+  display: inline-block;
   flex-direction: column;
   background-color: rgb(233, 233, 233);
   border-radius: 10px;
   justify-content: center;
   align-items: center;
-  object-fit: cover;
+}
 
+#box img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
 img {
   width: 100%;
+  height: 100%;
   border-radius: 10px;
 }
 
@@ -82,7 +85,6 @@ h2, p {
   color: #000;
   font-family: sans-serif;
   text-align: left;
-  
 }
 
 
@@ -187,6 +189,19 @@ h2, p {
 }
 #heartIcon {
   color: #000000;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full viewport height */
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
