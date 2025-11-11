@@ -85,7 +85,6 @@ ul {
   inset: 0;                
 }
 
-
 #img-container {
   display: flex;
   justify-content: center;
@@ -96,10 +95,7 @@ ul {
   width: 100%;
   overflow: hidden;   
   transition: filter 0s, transform 0s;   position: relative;
-  border-radius: 10px;
-  color: #000000;
-  font-family: sans-serif;
-  text-align: left;
+  border-radius: 5px;
 }
 
 img {
@@ -110,24 +106,38 @@ img {
   border-radius: 5px;
 }
 
-/* need help to position the menu on the left corner of the block*/
-
-
-h2, p {
-  color: #000;
-  font-family: sans-serif;
-  text-align: left;
+#button {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.2rem;
+  align-self: right;
+  position: absolute;
 }
 
+#heartIcon {
+  color: #000000;
+}
 
-.animation {
-  position: absolute;       
-  inset: 0;                
+#likeCount {
+  color: #000;
+  font-family: sans-serif;
+}
+
+.user-section {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  pointer-events: none;     
-  z-index: 10;             
+  width: 100%;
+  padding-left: 5px;
+}
+
+#text {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 10px;
 }
 
 /*These different overlay colors applied to the card, green overlay is to demonstrate swiping to the right by touch, red overlay is to the left */
@@ -181,57 +191,35 @@ h2, p {
   padding: 0 10px;
 }
 
-.like-wrapper {
-  display: flex;
-  justify-content: flex-end; /* Align heart button to the right */
-  align-items: center;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  padding-right: 8px;
-  width:100%;
-}
 
-#heartBtn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.5rem;
-  transition: transform 0.2s ease;
-}
+#right-side{
+  position: relative;
+  animation: moveRight 2s ease-in-out 2;
+  animation-delay: 0s;
 
-.heart-btn:hover {
-  transform: scale(1.2);
-}
-
-#heartIcon {
-  color: #000000;
-}
-
-#likeCount {
-  color: #000;
-  font-size: 1rem;
-  margin-left: 6px;
-  display: none;
-}
-
-#text {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
 
 }
 
-/* Mobile display*/
+@keyframes moveRight {
+  from{
+    right:0px;
+  }
+  to{
+    right:-500px;
+  }
+}
 
-/*@media screen and (max-width: 37.5rem) {
-#box{
-  width: 85%;
-}*/
+#left-side{
+  position: relative;
+  animation: moveLeft 2s ease-in-out 2;
+  animation-delay: 0s;
+}
 
-
-
-
-
-
-
-
+@keyframes moveLeft {
+  from {
+    left: 0px;
+  }
+  to {
+    left: -500px;
+  }
+}
