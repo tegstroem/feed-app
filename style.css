@@ -1,65 +1,123 @@
 /* desktop display*/
 
-
- body, html{
+body{
+  margin:0;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  flex-direction: column;
   box-sizing: border-box;
-  background-color: rgb(10, 7, 7);
-   overflow: hidden;
-   max-height: 200vh;
-
-  
-  
+  background-color: black;
+  height: 100%;
+  border: 25px solid black ;
 }
 
-.menu{
-  display: flex;
+.main-container {
   align-items: center;
-  justify-content: flex-start;
-  color: rgb(231, 231, 231);
-  margin: 0%;
-  padding: 0%;
-
-
-
+  justify-content: center;
+  height: 100vh; /* Full viewport height */
+  width: 100vw;  /* Full viewport width */
 }
+
 
 h1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: rgb(231, 231, 231);
-  margin: 0%;
-  padding: 0%;
-
-  
+  font-size: large;
+  font-family:sans-serif;
+  text-align: center;
+  padding: 1rem;
 }
 
-.hambuger {
-  margin-top: 10px;
-  height: 2px;
-  width: 15px;
-  background: #ebe5e5;
-  border-radius: 10% / 90%;
+
+p {
+  color: #000;
+  font-family: sans-serif;
+  text-align: left;
 }
 
+img{
+  display: block;
+  height: 100%;
+  width:340px;
+  object-fit: cover;
+  border-radius: 625rem;
+}
 
 #box {
   display: flex;
   flex-direction: column;
   background-color: rgb(233, 233, 233);
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 20px;
+}
+
+ul {
+  list-style: none;
+  cursor: pointer;
+}
+
+/* need help to position the menu on the left corner of the block*/
+
+
+.hambuger-menu {
+  position: absolute; 
+  top: 20px;          
+  left: 20px;        
+  z-index: 1000;
+  
+
+}
+
+.hambuger-menu .menu {
+    font-size: 28px;   
+    cursor: pointer;    
+    color: rgb(212, 212, 212);        
+    user-select: none;  
+
+}
+
+.hambuger-menu .menu:hover {
+    color: #ffffff;
+    text-shadow: 2px 2px 10px #ffffff;
+    filter: dropshadow(color=#ffffff, offx=4, offy=4);
+}
+
+
+.animation {
+  position: absolute;       
+  inset: 0;                
+}
+
+img {
+  display: block;
+  height: 300px;  
+  width: 100%  ;
+  object-fit: cover;
   border-radius: 5px;
+}
+
+#img-container {
+  display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 100%;
-  max-height: 150%;
-  object-fit: cover;
- padding: 10%;
-max-block-size: 100%;
+  pointer-events: none;     
+  z-index: 10;             
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;   
+  transition: filter 0s, transform 0s;   position: relative;
+  border-radius: ;
+  color: #000000;
+  font-family: sans-serif;
+  text-align: left;
+}
 
+img{
+  display: block;
+  height: 100%;  
+  width: 100%  ;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
 
@@ -148,26 +206,44 @@ h2, p {
 
 
 
-
 #button {
-  padding: .5rem 1rem;
+  display: flex;
+  justify-content: flex-end; /* Move heart button to the right */
+  align-items: center;
+  margin-top: 10px;
+  padding: 0 10px;
+}
+.like-wrapper {
+  display: flex;
+  justify-content: flex-end; /* Align heart button to the right */
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding-right: 8px;
+  width:100%;
+}
+
+#heartBtn {
+  background: none;
   border: none;
-  background: transparent;
   cursor: pointer;
-  font-size: 19.2px;
-  align-self: right;
- 
+  font-size: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.heart-btn:hover {
+  transform: scale(1.2);
 }
 
 #heartIcon {
   color: #000000;
-
 }
 
 #likeCount {
   color: #000;
-  font-family: sans-serif;
-
+  font-size: 1rem;
+  margin-left: 6px;
+  display: none;
 }
 
 .user-section {
