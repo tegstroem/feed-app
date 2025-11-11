@@ -11,8 +11,6 @@
 }
 
 
-
-
 header {
   display: flex;
   align-items: center;
@@ -22,12 +20,12 @@ header {
 }
 
 header p{
-  color: rgb(231, 231, 231);
-  font-size: x-large;
+  color: #ffffff;
+  font-size: 2em;
 }
   
 
-.hambuger-menu .menu:hover {
+.menu p:hover {
     color: #ffffff;
     text-shadow: 2px 2px 10px #ffffff;
     filter: dropshadow(color=#ffffff, offx=4, offy=4);
@@ -39,26 +37,18 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgb(231, 231, 231);
+  color: #ffffff;
   margin: 0%;
   padding: 0%;
 
   
 }
 
-.hambuger {
-  margin-top: 10px;
-  height: 2px;
-  width: 15px;
-  background: #ebe5e5;
-  border-radius: 10% / 90%;
-}
-
 
 #box {
   display: flex;
   flex-direction: column;
-  background-color: rgb(233, 233, 233);
+  background-color: #ffffff;
   border-radius: 10px;
   justify-content: center;
   align-items: center;
@@ -74,8 +64,8 @@ img {
 
 .caption-container {
 line-height: 20px;
-padding-left: 5px;
-margin-top: -40x;
+padding-left: 10px;
+margin-top: -45x;
 }
   
 
@@ -196,24 +186,23 @@ i{
     font-size: 20px;
     cursor: pointer;
     transform: translate(-50%, -50%);
-    color: #ebe5e5;
-
-};
+    color: #ffffff;
+}
 
 
 .comment-text{
   display: flex;
+  font-family: sans-serif;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: flex-start;
   line-height: 1px;
-  margin-top: 30px; 
-padding: 20px 10px 20px 10px;
-background-color: #dfdfdffb;
+  margin-top: 20px; 
+  margin-left: 10px;
+  background-color: #ffffff;
+  
 }
 
 .comment-text h3{
   margin-top: 10px;
+  font-family: sans-serif;
 }
-
-

@@ -173,7 +173,7 @@ function getUser(index) {
         "by Elena Petrova"
         ];
 
-    return photographers[index] || "Unknown Photographer";
+    return photographers[index] || "by Laura Smith";
 }
 
 function getCaption(index) {
@@ -189,7 +189,7 @@ function getCaption(index) {
         "Thai waters, before the storm....",
         "Details from an architects desk."
     ];
-    return captions[index] || "Back to work!";
+    return captions[index] || "#WIP!";
 }
 
 function getCameraSpecs(index) {
@@ -211,14 +211,8 @@ function getCameraSpecs(index) {
         "📷 Nikon Zf | 40mm f/2"
         ];
 
-    return specs[index] || "Camera info unavailable";
+    return specs[index] || "📷 Panasonic Lumix S5II | 50mm f/1.4";
 }
-
-
-
-
-
-
 
 
 function unify(e) {
@@ -304,8 +298,6 @@ heartBtn.addEventListener('click', () => {
 fetchPages()
 
 
-
-
 // Add a click event listener to the button.
 toggle.addEventListener('click', function(){
     this.classList.toggle('bi-moon');
@@ -319,9 +311,6 @@ toggle.addEventListener('click', function(){
         body.style.transition = '2s';
     }
 });
-
-
-
 
 
 // The swipeRightAnimation() is to display a demo of the "swipe by touch function". It's stored in the localStorage so it only render for users who visited the app first time.
@@ -340,7 +329,6 @@ function swipeRightLeftAnimation(){
 if(!localStorage.getItem('SwipeDemoShow')) {
 
   localStorage.setItem('SwipeDemoShow', 'true');
-
 
 
   setTimeout(()=>{
