@@ -1,15 +1,42 @@
 /* desktop display*/
-body{
-  margin:0;
-  display: flex;
-  flex-direction: column;
+
+ body, html{
   box-sizing: border-box;
-  background-color: black;
+  background-color: rgb(10, 7, 7);
+  overflow-x: hidden;
+  margin-left: 10px;
+  margin-right: 10px;
   height: 100%;
-  border: 25px solid black ;
+
 }
 
-.main-container {
+
+
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0%;
+  padding: 0%;
+}
+
+header p{
+  color: rgb(231, 231, 231);
+  font-size: x-large;
+}
+  
+
+.hambuger-menu .menu:hover {
+    color: #ffffff;
+    text-shadow: 2px 2px 10px #ffffff;
+    filter: dropshadow(color=#ffffff, offx=4, offy=4);
+}
+
+
+h1 {
+  font-family: sans-serif;
+  display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh; /* Full viewport height */
@@ -47,42 +74,41 @@ img{
   flex-direction: column;
   background-color: rgb(233, 233, 233);
   border-radius: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 50%;
-
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
+  margin-bottom: 0%;
 
 }
 
-ul {
-  list-style: none;
-  cursor: pointer;
+img {
+  width: 100%;
+  border-radius: 10px;
 }
+
+.caption-container {
+line-height: 20px;
+padding-left: 5px;
+margin-top: -40x;
+}
+  
 
 /* need help to position the menu on the left corner of the block*/
 
 
-.hambuger-menu {
-  position: absolute; 
-  top: 20px;          
-  left: 20px;        
-  z-index: 1000;
+h2, p {
+  color: #000;
+  font-family: sans-serif;
+  text-align: left;
   
-
 }
 
-.hambuger-menu .menu {
-    font-size: 28px;   
-    cursor: pointer;    
-    color: rgb(212, 212, 212);        
-    user-select: none;  
 
-}
-
-.hambuger-menu .menu:hover {
-    color: #ffffff;
-    text-shadow: 2px 2px 10px #ffffff;
-    filter: dropshadow(color=#ffffff, offx=4, offy=4);
+#img-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
 }
 
 
@@ -159,8 +185,8 @@ img{
 .shake-right{
    animation: shakeRightSide 2s ease-in-out 2;
   animation-delay: 0s;
-  
 }
+
 .shake-left{
    animation: shakeLeftSide 2s ease-in-out 2;
   animation-delay: 0s;
@@ -173,7 +199,6 @@ img{
   50%  { transform: translateX(1.875rem) rotate(10deg); }
   75%  { transform: translateX(.9375rem) rotate(5deg); }
   100% { transform: translateX(0) rotate(0deg); }
- 
 }
 
 
@@ -183,77 +208,73 @@ img{
   50%  { transform: translateX(-1.875rem) rotate(-10deg); }
   75%  { transform: translateX(-0.9375rem) rotate(-5deg); }
   100% { transform: translateX(0) rotate(0deg); }
-
 }
-
-
-
 
 #button {
-  padding: .5rem 1rem;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-size: 19.2px;
-  align-self: right;
- 
+  display: flex;
+  justify-content: flex-end; /* Move heart button to the right */
+  align-items: center;
+  margin-top: 10px;
+  padding: 0 10px;
+  
 }
 
-#heartIcon {
-  color: #000000;
 
+.like-wrapper {
+  display: flex;
+  justify-content: flex-end; /* Align heart button to the right */
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding-right: 8px;
+  width:100%;
+}
+
+
+#heartBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: transform 0.2s ease;
 }
 
 #likeCount {
   color: #000;
+  font-size: 1.2rem;
+  margin-right: 10px;
+  display: none;
   font-family: sans-serif;
-
 }
 
-#text {
+.heart-btn:hover {
+  transform: scale(1.2);
+}
+#heartIcon {
+  color: #000000;
+}
+i{
+    font-size: 20px;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    color: #ebe5e5;
+
+};
+
+
+.comment-text{
   display: flex;
   flex-direction: column;
-  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  line-height: 1px;
+  margin-top: 30px; 
+padding: 20px 10px 20px 10px;
+background-color: #dfdfdffb;
 }
 
-/* Mobile display*/
-
-@media screen and (max-width: 37.5rem) {
-#box{
-  width: 85%;
+.comment-text h3{
+  margin-top: 10px;
 }
 
 
-
-}
-
-
-#right-side{
-  position: relative;
-  animation: moveRight 2s ease-in-out 2;
-  animation-delay: 0s;
-}
-
-@keyframes moveRight {
-  from{
-    right:0px;
-  }
-  to{
-    right:-500px;
-  }
-}
-
-#left-side{
-  position: relative;
-  animation: moveLeft 2s ease-in-out 2;
-  animation-delay: 0s;
-}
-
-@keyframes moveLeft {
-  from {
-    left: 0px;
-  }
-  to {
-    left: -500px;
-  }
-}

@@ -1,10 +1,26 @@
-//import { renderPost } from './data.js';
-
 const imgContainer = document.getElementById('img-container');
 const imgEl = document.createElement('img');
 const userEl = document.createElement('h2');
 const captionEl = document.createElement('p');
 const cameraspecsEl = document.createElement('p');
+const captionContainer = document.createElement('div');
+
+// toggle declarations
+const toggle = document.getElementById('toggleDark');
+const body = document.querySelector('html');
+
+
+captionContainer.append(userEl, cameraspecsEl,captionEl);
+captionContainer.classList.add('caption-container');
+
+const commentSection = document.createElement('div');
+commentSection.classList.add('comment-text');
+const commentStar = document.createElement('p');
+const comment = document.createElement('p');
+const commenter = document.createElement('h3');
+commenter.classList.add('commenter');
+commentSection.append(commentStar,commenter, comment);
+
 
 
 // Like button elements
@@ -25,7 +41,7 @@ let currentIndex = 0;
 let isDragging = false;
 let startPosX = 0;
 let likes = [];
-
+let comments = [];
 
 
 
@@ -39,10 +55,13 @@ async function fetchPages(){
     images = images.concat(allImages);
 
     likes = likes.concat(allImages.map(() => 0));
-
+     
+    
      // Initialize each image’s like count
       images.forEach((_, index) => likes[index] = 0);
-    
+
+     const pageComments = data.data.flatMap(img => img.comments || []);comments = comments.concat(pageComments);
+
     
     if(page ===1){
       renderImage()
@@ -68,7 +87,11 @@ function renderImage() {
         userEl.textContent = getUser(currentIndex);
         captionEl.textContent = getCaption(currentIndex);
         cameraspecsEl.textContent = getCameraSpecs(currentIndex);
+        commentStar.textContent = getStars(currentIndex);
+        commenter.textContent = `${comments[currentIndex].commenter_name}`
+        comment.textContent = `${comments[currentIndex].comment}`
         
+      
 // Clear container first
         imgContainer.innerHTML = '';
 
@@ -81,9 +104,9 @@ function renderImage() {
 // Append elements in desired order
         imgContainer.appendChild(imgEl);       // image first
         imgContainer.appendChild(likeWrapper); // then heart + like count     
-        imgContainer.appendChild(userEl);      // then user
-        imgContainer.appendChild(captionEl);   // then caption
-        imgContainer.appendChild(cameraspecsEl);// then camera specs
+        imgContainer.appendChild(captionContainer);
+        
+      imgContainer.appendChild(commentSection)
 
 // Update like count and heart color
        
@@ -101,18 +124,52 @@ function renderImage() {
        
       }
 
+
+  
+
+ //data.js content starts here
+
+//export function renderPost(post) {
+  //  return {
+        // name: getUser(post.index),
+        // caption: getCaption(post.index),
+        // camera: getCameraSpecs(post.index)
+    //};
+//}
+// Function that hold an array of stars
+function getStars(index) {
+    const stars = [
+        "⭐⭐⭐⭐★",
+        "⭐⭐⭐★★",
+        "⭐★★★★",
+        "⭐⭐★★★",
+        "⭐⭐⭐⭐⭐",
+        "⭐⭐★★★",
+        "⭐⭐⭐⭐★",
+        "⭐⭐⭐⭐⭐",
+        "⭐⭐⭐★★",
+        "⭐★★★★",
+          "⭐⭐⭐⭐★",
+        "⭐⭐⭐⭐⭐",
+          "⭐⭐⭐⭐★",
+        "⭐⭐⭐⭐⭐",
+        ];
+
+    return stars[index] || "Unknown reviews";
+}
+
 function getUser(index) {
     const photographers = [
-        "Alejandro Torres",
-        "Mina Kobayashi",
-        "Luca Moretti",
-        "Amara Singh",
-        "Jonas Müller",
-        "Camila Duarte",
-        "Noah Andersen",
-        "Layla Haddad",
-        "Tomasz Kowalski",
-        "Elena Petrova"
+        "by Alejandro Torres",
+        "by Mina Kobayashi",
+        "by Luca Moretti",
+        "by Amara Singh",
+        "by Jonas Müller",
+        "by Camila Duarte",
+        "by Noah Andersen",
+        "by Layla Haddad",
+        "by Tomasz Kowalski",
+        "by Elena Petrova"
         ];
 
     return photographers[index] || "Tova Borglund";
@@ -151,7 +208,7 @@ function getCameraSpecs(index) {
         "📷 Canon EOS R3 | 100-500mm f/4.5-7.1L",
         "📷 Sony FX3 | 24mm f/1.4 GM",
         "📷 Nikon Zf | 40mm f/2"
-    ];
+        ];
 
     return specs[index] || "📷 Camera info unavailable";
 }
@@ -236,9 +293,29 @@ heartBtn.addEventListener('click', () => {
 });
 
 fetchPages()
- 
 
-//The swipeRightAnimation() is to display a demo of the "swipe by touch function". It's stored in the localStorage so it only render for users who visited the app first time.
+
+
+
+// Add a click event listener to the button.
+toggle.addEventListener('click', function(){
+    this.classList.toggle('bi-moon');
+    if(this.classList.toggle('bi-brightness-high-fill')){
+        body.style.background = 'white';
+        body.style.color = 'black';
+        body.style.transition = '2s';
+    }else{
+        body.style.background = 'black';
+        body.style.color = 'white';
+        body.style.transition = '2s';
+    }
+});
+
+
+
+
+
+// The swipeRightAnimation() is to display a demo of the "swipe by touch function". It's stored in the localStorage so it only render for users who visited the app first time.
 
 
 function swipeRightLeftAnimation(){
