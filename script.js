@@ -128,7 +128,7 @@ function getUser(index) {
         "by Elena Petrova"
         ];
 
-    return photographers[index] || "Unknown Photographer";
+    return photographers[index] || "by Laura Fitzgerald";
 }
 
 function getCaption(index) {
@@ -144,7 +144,7 @@ function getCaption(index) {
         "Thai waters, before the storm....",
         "Details from an architects desk."
     ];
-    return captions[index] || "Back to work!";
+    return captions[index] || "#WIP #Photography";
 }
 
 function getCameraSpecs(index) {
@@ -166,14 +166,8 @@ function getCameraSpecs(index) {
         "📷 Nikon Zf | 40mm f/2"
         ];
 
-    return specs[index] || "Camera info unavailable";
+    return specs[index] || "📷 Fujifilm X-H2S | 18-55mm f/2.8-4";
 }
-
-
-
-
-
-
 
 
 function unify(e) {
