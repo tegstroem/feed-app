@@ -24,7 +24,7 @@ header p{
 }
   
 
-.hambuger-menu .menu:hover {
+.hamburger-menu:hover {
     color: #ffffff;
     text-shadow: 2px 2px 10px #ffffff;
     filter: dropshadow(color=#ffffff, offx=4, offy=4);
