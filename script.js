@@ -126,8 +126,6 @@ function renderImage() {
       }
 
 
-  
-
  //data.js content starts here
 
 //export function renderPost(post) {
@@ -159,22 +157,24 @@ function getStars(index) {
     return stars[index] || "Unknown reviews";
 }
 
-function getUser(index) {
-    const photographers = [
-        "by Alejandro Torres",
-        "by Mina Kobayashi",
-        "by Luca Moretti",
-        "by Amara Singh",
-        "by Jonas Müller",
-        "by Camila Duarte",
-        "by Noah Andersen",
-        "by Layla Haddad",
-        "by Tomasz Kowalski",
-        "by Elena Petrova"
-        ];
+function getUser() {
+  const photographers = [
+    "by Alejandro Torres",
+    "by Mina Kobayashi",
+    "by Luca Moretti",
+    "by Amara Singh",
+    "by Jonas Müller",
+    "by Camila Duarte",
+    "by Noah Andersen",
+    "by Layla Haddad",
+    "by Tomasz Kowalski",
+    "by Elena Petrova"
+  ];
 
-    return photographers[index] || "by Laura Smith";
+  const randomIndex = Math.floor(Math.random() * (photographers.length));
+  return photographers[randomIndex] || "by Laura Smith";
 }
+
 
 function getCaption(index) {
     const captions = [
@@ -189,7 +189,7 @@ function getCaption(index) {
         "Thai waters, before the storm....",
         "Details from an architects desk."
     ];
-    return captions[index] || "#WIP!";
+    return captions[index] || "#WIP #photography #photooftheday";
 }
 
 function getCameraSpecs(index) {
@@ -211,7 +211,9 @@ function getCameraSpecs(index) {
         "📷 Nikon Zf | 40mm f/2"
         ];
 
-    return specs[index] || "📷 Panasonic Lumix S5II | 50mm f/1.4";
+
+  const randomIndex = Math.floor(Math.random() * (specs.length));
+    return specs[randomIndex] || "📷 Panasonic Lumix S5II | 50mm f/1.4";
 }
 
 
