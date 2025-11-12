@@ -8,7 +8,8 @@ const captionContainer = document.createElement('div');
 
 // toggle declarations
 const toggle = document.getElementById('toggleDark');
-const body = document.querySelector('html');
+const body = document.querySelector('body');
+const html = document.querySelector('html');
 
 // caption container elements
 captionContainer.append(userEl, cameraspecsEl,captionEl);
@@ -306,14 +307,15 @@ fetchPages()
 toggle.addEventListener('click', function(){
     this.classList.toggle('bi-moon');
     if(this.classList.toggle('bi-brightness-high-fill')){
-        body.style.background = 'white';
+        body.style.background = '#86bceb';
         body.style.color = 'black';
         body.style.transition = '2s';
+        html.style.background = '#86bceb';
     }else{
         body.style.background = 'black';
         body.style.color = 'white';
         body.style.transition = '2s';
-    }
+        html.style.background = 'black';  }
 });
 
 
