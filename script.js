@@ -1,3 +1,4 @@
+// selecting necessary DOM elements
 const imgContainer = document.getElementById('img-container');
 const imgEl = document.createElement('img');
 const userEl = document.createElement('h2');
@@ -9,10 +10,11 @@ const captionContainer = document.createElement('div');
 const toggle = document.getElementById('toggleDark');
 const body = document.querySelector('html');
 
-
+// caption container elements
 captionContainer.append(userEl, cameraspecsEl,captionEl);
 captionContainer.classList.add('caption-container');
 
+// comment section elements
 const commentSection = document.createElement('div');
 commentSection.classList.add('comment-text');
 const commentStar = document.createElement('p');
@@ -44,7 +46,7 @@ let likes = [];
 let comments = [];
 
 
-
+// fetching images from the API
 async function fetchPages(){
   
   try{
