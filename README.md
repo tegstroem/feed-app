@@ -31,4 +31,4 @@ feeling of looking through a porfolio book.
 - heartBtn - Like icon addeventlistener
 - Art description 
   
-  
+  for assessment
