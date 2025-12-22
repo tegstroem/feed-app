@@ -31,7 +31,8 @@ const heartBtn = document.getElementById('heartBtn');
 const heartIcon = document.getElementById('heartIcon');
 const likeCount = document.getElementById('likeCount');
 
-
+const saveBtn = document.getElementById('saveBtn');
+const saveIcon = document.getElementById('saveIcon');
 
 //Creating an empty array to push the images in
 //Intializing currentPages to start with page 1
@@ -45,6 +46,8 @@ let isDragging = false;
 let startPosX = 0;
 let likes = [];
 let comments = [];
+
+let savedImages = JSON.parse(localStorage.getItem('savedImages')) || [];
 
 
 // fetching images from the API
@@ -79,6 +82,17 @@ console.log("Fetching images is completed")
 }
 
 fetchPages()
+
+function updateSaveButton() {
+  const currentImageURL = images[currentIndex];
+  const isSaved = savedImages.includes(currentImageURL);
+  
+  if (isSaved) {
+    saveIcon.textContent = '✅'; // Saved icon
+  } else {
+    saveIcon.textContent = '💾'; // Unsaved icon
+  }
+}
 
 
 // Rendering the images for each page that we fetched
@@ -318,6 +332,28 @@ toggle.addEventListener('click', function(){
         html.style.background = 'black';  }
 });
 
+saveBtn.addEventListener('click', () => {
+  const currentImageURL = images[currentIndex];
+  const index = savedImages.indexOf(currentImageURL);
+
+  if (index > -1) {
+    savedImages.splice(index, 1);
+    alert('Image has been removed from your saved list!');
+  } else {
+
+    savedImages.push(currentImageURL);
+    alert('Image saved! You can find it in the browser\'s local storage.');
+  }
+
+  try {
+    localStorage.setItem('savedImages', JSON.stringify(savedImages));
+  } catch (e) {
+    console.error("Could not save images to local storage", e);
+    alert("Sorry, there was an error saving your image.");
+  }
+  
+  updateSaveButton();
+});
 
 // The swipeRightAnimation() is to display a demo of the "swipe by touch function". It's stored in the localStorage so it only render for users who visited the app first time.
 

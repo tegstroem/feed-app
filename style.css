@@ -210,3 +210,39 @@ i{
   margin-top: 10px;
   font-family: sans-serif;
 }
+/* Save button styling */
+#saveBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: transform 0.2s ease;
+  margin-right: 10px;
+}
+
+#saveBtn:hover {
+  transform: scale(1.2);
+}
+
+#saveIcon {
+  color: #000000;
+}
+
+/* Adjust the button container to accommodate both buttons */
+#button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 0 10px;
+}
+
+.like-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding-right: 8px;
+  width: auto;
+}
